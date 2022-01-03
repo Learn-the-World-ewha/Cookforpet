@@ -55,7 +55,7 @@ def PageCrawler(recipeUrl):
         elif res==57:
             cook_time = "2시간 이상"
         # 보관 기한
-        storage = json.loads(response)['result'][0]['content']
+        tip = json.loads(response)['result'][0]['content']
         # 대표사진 url
         res = json.loads(response)['result'][0]['cooking_representation']
         found = re.findall('\"images\":\"(.+?)\"',res)
@@ -67,7 +67,7 @@ def PageCrawler(recipeUrl):
 
         insert_recipe = """insert into recipe values (?,?,?,?,?,?,?,?,?);"""
         cur.execute(insert_recipe, (recipe_code, recipe_name, recipe_sum,
-        type, cook_time, storage, img_main, effect, 0))
+        type, cook_time, tip, img_main, effect, 0))
 
         con.close()
 
