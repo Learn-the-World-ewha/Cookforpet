@@ -13,6 +13,8 @@ public class CatsMainActivity extends AppCompatActivity {
     private ImageButton imgBtn_search;
     private EditText editTxt_search;
     private String search;
+    private ImageButton imgBtn_home;
+    private ImageButton imgBtn_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,24 @@ public class CatsMainActivity extends AppCompatActivity {
                 search = editTxt_search.getText().toString();
                 Intent intent = new Intent(CatsMainActivity.this, CatSearchResultActivity.class);
                 intent.putExtra("search",search);
+                startActivity(intent);  // activity 이동
+            }
+        });
+
+        imgBtn_home = findViewById(R.id.imgBtn_home);
+        imgBtn_home.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(CatsMainActivity.this, TypeActivity.class);
+                startActivity(intent);  // activity 이동
+            }
+        });
+
+        imgBtn_user = findViewById(R.id.imgBtn_user);
+        imgBtn_user.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(CatsMainActivity.this, UserActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });
