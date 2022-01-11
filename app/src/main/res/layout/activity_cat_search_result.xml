@@ -49,7 +49,7 @@
         android:layout_marginTop="70dp"
         android:background="@drawable/edge"
         android:ems="10"
-        android:text="Searchword"
+        android:text="Searchwords"
         android:padding="10dp"
         android:textColor="@color/black"
         android:textSize="16sp"
