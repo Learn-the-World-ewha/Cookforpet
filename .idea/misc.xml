@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/button_round.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/edge.xml" value="0.1578125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_cat_search_result.xml" value="0.14166666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_cat_search_result2.xml" value="0.1453804347826087" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_cats_main.xml" value="0.128125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_cats_recipe.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dog_search_result.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_main2.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_recipe.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_recipe2.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_drawer.xml" value="0.1453804347826087" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_likes.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_menu_test.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_myrefrigerator.xml" value="0.1634963768115942" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_myrefrigerator_detail.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_personal.xml" value="0.1634963768115942" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_recipe_detail.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_ref_detail.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_refrigerator.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_register.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_type.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_type2.xml" value="0.128125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_user.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/content_navi_test.xml" value="0.1453804347826087" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/activity_main_drawer.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu_bottom.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu_test.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/navi_test.xml" value="0.17916666666666667" />
+        <entry key="app/src/main/res/layout/activity_cat_search_result.xml" value="0.13994565217391305" />
+        <entry key="app/src/main/res/layout/activity_cats_main.xml" value="0.13994565217391305" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
