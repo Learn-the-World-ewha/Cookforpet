@@ -108,12 +108,16 @@
         android:layout_height="500dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@id/guidelineMid2">
+        app:layout_constraintTop_toTopOf="@id/guidelineMid2"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineBottom"
+        android:maxHeight="500dp"
+        android:maxWidth="350dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
