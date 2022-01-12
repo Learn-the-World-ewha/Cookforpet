@@ -24,8 +24,13 @@ public class DogsMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_main);
 
-        editTxt_search = findViewById(R.id.editTxt_search);
 
+        RecipeList rcplist = findViewById(R.id.rcplist);
+        rcplist.setImg_rcp(R.drawable.ic_launcher_foreground);
+        rcplist.setTxt_rcp("Recipe");
+        rcplist.setTxt_mat("재료1, 재료2, 재료3, ...");
+
+        editTxt_search = findViewById(R.id.editTxt_search);
         imgBtn_search = findViewById(R.id.imgBtn_search);
         imgBtn_search.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,7 +46,7 @@ public class DogsMainActivity extends AppCompatActivity {
         imgBtn_home.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(DogsMainActivity.this, MainActivity.class);
+                Intent intent = new Intent(DogsMainActivity.this, TypeActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });

@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class DogSearchResultActivity extends AppCompatActivity {
 
     private TextView txt_search;
-    private ImageButton imgBtn_rcp1;
+    //private ImageButton imgBtn_rcp1;
     private ImageButton imgBtn_home;
     private ImageButton imgBtn_user;
 
@@ -20,6 +20,10 @@ public class DogSearchResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_search_result);
 
+        RecipeList rcplist = findViewById(R.id.rcplist);
+        rcplist.setImg_rcp(R.drawable.ic_launcher_foreground);
+        rcplist.setTxt_mat("재료1, 재료2, 재료3, ...");
+
         txt_search = findViewById(R.id.txt_search);
 
         Intent intent = getIntent();
@@ -27,14 +31,24 @@ public class DogSearchResultActivity extends AppCompatActivity {
 
         txt_search.setText(search);
 
-        imgBtn_rcp1 = findViewById(R.id.imgBtn_rcp1);
-        imgBtn_rcp1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(DogSearchResultActivity.this, DogsRecipeActivity.class);
-                startActivity(intent);  // activity 이동
-            }
-        });
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+        databaseAccess.open();
+
+        //getting string value
+        String rcp_name = databaseAccess.getRecipeName(search);
+
+        //setting text to result field
+        rcplist.setTxt_rcp(rcp_name);
+        databaseAccess.close();
+
+//        imgBtn_rcp1 = findViewById(R.id.imgBtn_rcp1);
+//        imgBtn_rcp1.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(DogSearchResultActivity.this, DogsRecipeActivity.class);
+//                startActivity(intent);  // activity 이동
+//            }
+//        });
 
         imgBtn_home = findViewById(R.id.imgBtn_home);
         imgBtn_home.setOnClickListener(new View.OnClickListener(){

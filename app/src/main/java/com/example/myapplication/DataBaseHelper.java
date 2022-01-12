@@ -4,8 +4,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,7 +14,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private final static String TAG = "DataBaseHelper"; // Logcat에 출력할 태그이름
     // database 의 파일 경로
     private static String DB_PATH = "";
-    private static String DB_NAME = "cookforpet.db";
+    private static String DB_NAME = "databases/cookforpet.db";
     private SQLiteDatabase mDataBase;
     private Context mContext;
 
