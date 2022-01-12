@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MatList extends LinearLayout{
-    ImageView img_mat;
     TextView txt_mat;
     TextView txt_unit;
 
@@ -24,12 +23,8 @@ public class MatList extends LinearLayout{
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.mat_list, this, true);
 
-        img_mat = findViewById(R.id.img_mat);
         txt_mat = findViewById(R.id.txt_mat);
         txt_unit = findViewById(R.id.txt_unit);
-    }
-    public void setImg_mat(int resId){
-        img_mat.setImageResource(resId);
     }
     public void setTxt_mat(String mat){
         txt_mat.setText(mat);

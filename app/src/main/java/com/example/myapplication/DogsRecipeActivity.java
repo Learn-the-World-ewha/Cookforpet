@@ -16,7 +16,6 @@ public class DogsRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dogs_recipe);
 
         MatList matlist = findViewById(R.id.matlist);
-        matlist.setImg_mat(R.drawable.ic_launcher_foreground);
         matlist.setTxt_mat("다진 소고기");
         matlist.setTxt_unit("200g");
 
