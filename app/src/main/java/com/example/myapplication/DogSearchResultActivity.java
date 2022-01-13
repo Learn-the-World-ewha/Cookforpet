@@ -27,9 +27,9 @@ public class DogSearchResultActivity extends AppCompatActivity {
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         RecipeItemAdapter adapter = new RecipeItemAdapter();
-        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts\\/images\\/20190109\\/5c357b2be5787.png",
+        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts//images//20190109//5c357b2be5787.png",
                 "강아지를 위한 치즈볼 - 구취 제거에 좋은","재료1, 재료2, 재료3, ..."));
-        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts\\/images\\/20190109\\/5c3580cf0f12d.png",
+        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts//images//20190109//5c3580cf0f12d.png",
                 "흰살 생선 요리 -  소화력에 도움이 되는","재료4, 재료5, 재료6, ..."));
         recyclerView.setAdapter(adapter);
 
