@@ -82,12 +82,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.example.myapplication.MatList
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/matlist">
+                    android:layout_height="match_parent"
+                    android:id="@+id/recycler_mat">
 
-                </com.example.myapplication.MatList>
+                </androidx.recyclerview.widget.RecyclerView>
+<!--                <com.example.myapplication.MatList-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/matlist">-->
+
+<!--                </com.example.myapplication.MatList>-->
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -123,10 +129,10 @@
 
     <ToggleButton
         android:id="@+id/tog_like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:text="Like"
-        android:background="#FFFFFF"
+        android:background="@drawable/empty_heart"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMid1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop" />

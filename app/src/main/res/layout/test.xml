@@ -148,8 +148,9 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:text="Like"
-        android:background="@drawable/heart_full"
+        android:background="@drawable/empty_heart"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMid1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

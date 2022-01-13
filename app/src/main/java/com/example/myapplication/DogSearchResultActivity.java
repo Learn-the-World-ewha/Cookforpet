@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,9 +22,29 @@ public class DogSearchResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_search_result);
 
-        RecipeList rcplist = findViewById(R.id.rcplist);
-        rcplist.setImg_rcp(R.drawable.ic_launcher_foreground);
-        rcplist.setTxt_mat("재료1, 재료2, 재료3, ...");
+        RecyclerView recyclerView = findViewById(R.id.recycler_rcp);
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        RecipeItemAdapter adapter = new RecipeItemAdapter();
+        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts\\/images\\/20190109\\/5c357b2be5787.png",
+                "강아지를 위한 치즈볼 - 구취 제거에 좋은","재료1, 재료2, 재료3, ..."));
+        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts\\/images\\/20190109\\/5c3580cf0f12d.png",
+                "흰살 생선 요리 -  소화력에 도움이 되는","재료4, 재료5, 재료6, ..."));
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
+            @Override
+            public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
+                RecipeItem item = adapter.getItem(position);
+                Intent intent = new Intent(DogSearchResultActivity.this, DogsRecipeActivity.class);
+                startActivity(intent);  // activity 이동
+            }
+        });
+
+//        RecipeList rcplist = findViewById(R.id.rcplist);
+//        rcplist.setImg_rcp(R.drawable.ic_launcher_foreground);
+//        rcplist.setTxt_mat("재료1, 재료2, 재료3, ...");
 
         txt_search = findViewById(R.id.txt_search);
 
@@ -31,15 +53,15 @@ public class DogSearchResultActivity extends AppCompatActivity {
 
         txt_search.setText(search);
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-        databaseAccess.open();
-
-        //getting string value
-        String rcp_name = databaseAccess.getRecipeName(search);
-
-        //setting text to result field
-        rcplist.setTxt_rcp(rcp_name);
-        databaseAccess.close();
+//        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+//        databaseAccess.open();
+//
+//        //getting string value
+//        String rcp_name = databaseAccess.getRecipeName(search);
+//
+//        //setting text to result field
+//        rcplist.setTxt_rcp(rcp_name);
+//        databaseAccess.close();
 
 //        imgBtn_rcp1 = findViewById(R.id.imgBtn_rcp1);
 //        imgBtn_rcp1.setOnClickListener(new View.OnClickListener(){

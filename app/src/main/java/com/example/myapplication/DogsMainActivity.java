@@ -3,6 +3,8 @@ package com.example.myapplication;
 import static android.view.View.*;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -27,11 +29,30 @@ public class DogsMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_main);
 
+        RecyclerView recyclerView = findViewById(R.id.recycler_rcp);
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        RecipeItemAdapter adapter = new RecipeItemAdapter();
+        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts\\/images\\/20190109\\/5c357b2be5787.png",
+                "강아지를 위한 치즈볼 - 구취 제거에 좋은","재료1, 재료2, 재료3, ..."));
+        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts\\/images\\/20190109\\/5c3580cf0f12d.png",
+                "흰살 생선 요리 -  소화력에 도움이 되는","재료4, 재료5, 재료6, ..."));
+        recyclerView.setAdapter(adapter);
 
-        RecipeList rcplist = findViewById(R.id.rcplist);
-        rcplist.setImg_rcp(R.drawable.ic_launcher_foreground);
-        rcplist.setTxt_rcp("Recipe");
-        rcplist.setTxt_mat("재료1, 재료2, 재료3, ...");
+        adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
+            @Override
+            public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
+                RecipeItem item = adapter.getItem(position);
+                Intent intent = new Intent(DogsMainActivity.this, DogSearchResultActivity.class);
+                startActivity(intent);  // activity 이동
+            }
+        });
+
+//        RecipeList rcplist = findViewById(R.id.rcplist);
+//        rcplist.setImg_rcp(R.drawable.ic_launcher_foreground);
+//        rcplist.setTxt_rcp("Recipe");
+//        rcplist.setTxt_mat("재료1, 재료2, 재료3, ...");
 
         editTxt_search = findViewById(R.id.editTxt_search);
         imgBtn_search = findViewById(R.id.imgBtn_search);
