@@ -5,10 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class DogSearchResultActivity extends AppCompatActivity {
 
@@ -16,6 +21,14 @@ public class DogSearchResultActivity extends AppCompatActivity {
     //private ImageButton imgBtn_rcp1;
     private ImageButton imgBtn_home;
     private ImageButton imgBtn_user;
+    private ArrayList<RecipeItem> mRecipeItems;
+
+    ArrayList<String> recipe_name, recipe_code;
+    ArrayList<String> mat_name;
+    DataBaseHelper DB;
+    RecyclerView recyclerView;
+    RecipeItemAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,39 +40,38 @@ public class DogSearchResultActivity extends AppCompatActivity {
         String search = intent.getStringExtra("search");
         txt_search.setText(search);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_rcp);
+        recyclerView = findViewById(R.id.recycler_rcp);
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        RecipeItemAdapter adapter = new RecipeItemAdapter();
-
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-        databaseAccess.open();
-
-        //getting string value
-        String rcp_name = databaseAccess.getRecipeName(search);
-        String rcp_img = databaseAccess.getRecipeImg(search);
-
-        //setting text to result field
-        //rcplist.setTxt_rcp(rcp_name);
-
-        adapter.addItem(new RecipeItem(rcp_img,
-                rcp_name,"재료1, 재료2, 재료3, ..."));
-        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts//images//20190109//5c3580cf0f12d.png",
-                "흰살 생선 요리 -  소화력에 도움이 되는","재료4, 재료5, 재료6, ..."));
+        adapter = new RecipeItemAdapter();
         recyclerView.setAdapter(adapter);
+
+
+//        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+//        databaseAccess.open();
+//
+//        //getting string value
+//        String rcp_name = databaseAccess.getRecipeName(search);
+//        String rcp_img = databaseAccess.getRecipeImg(search);
+//
+//        //setting text to result field
+//        //rcplist.setTxt_rcp(rcp_name);
+//
+//        adapter.addItem(new RecipeItem(rcp_img,
+//                rcp_name,"재료1, 재료2, 재료3, ..."));
+//        recyclerView.setAdapter(adapter);
+//        databaseAccess.close();
 
         adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
             @Override
             public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
                 RecipeItem item = adapter.getItem(position);
                 Intent intent = new Intent(DogSearchResultActivity.this, DogsRecipeActivity.class);
+                intent.putExtra("recipe_code",recipe_code.get(position));
                 startActivity(intent);  // activity 이동
             }
         });
-
-        databaseAccess.close();
-
 
 //        RecipeList rcplist = findViewById(R.id.rcplist);
 //        rcplist.setImg_rcp(R.drawable.ic_launcher_foreground);

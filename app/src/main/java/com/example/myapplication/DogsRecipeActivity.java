@@ -9,25 +9,30 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DogsRecipeActivity extends AppCompatActivity {
+
+    DataBaseHelper DB;
+    RecyclerView recycler_rcp, recycler_mat;
+    TextView txt_title, txt_tip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_recipe);
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_mat);
+        recycler_mat = findViewById(R.id.recycler_mat);
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
+        recycler_mat.setLayoutManager(layoutManager);
         MaterialItemAdapter adapter = new MaterialItemAdapter();
         adapter.addItem(new MaterialItem("다진 소고기", "200g"));
         adapter.addItem(new MaterialItem("간장", "1 큰술"));
         adapter.addItem(new MaterialItem("대파", "20g"));
         adapter.addItem(new MaterialItem("물", "200ml"));
-        recyclerView.setAdapter(adapter);
+        recycler_mat.setAdapter(adapter);
 
 
 //        MatList matlist = findViewById(R.id.matlist);

@@ -1,8 +1,11 @@
 package com.example.myapplication;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -85,6 +88,116 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("dbCopy","IOException 발생함");
+        }
+    }
+    public Cursor readAllRecipe(){
+        String query = "SELECT * FROM recipe";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+    public Cursor readAllMaterials(){
+        String query = "SELECT * FROM materials";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+    public Cursor readAllStep(){
+        String query = "SELECT * FROM step";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+    public Cursor readAllVisit(){
+        String query = "SELECT * FROM visit";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+    public Cursor readAllCook(){
+        String query = "SELECT * FROM cook";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+    public Cursor readAllUser(){
+        String query = "SELECT * FROM user";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+    public void addUser(String user_code, String user_id, String user_pwd,
+                        String user_name, String user_type, String user_effect){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("user_code", user_code);
+        cv.put("user_id",  user_id);
+        cv.put("user_pwd", user_pwd);
+        cv.put("user_name", user_name);
+        cv.put("user_type", user_type);
+        cv.put("user_effect", user_effect);
+
+        long result = db.insert("user", "null", cv);
+        if(result == -1){
+            Toast.makeText(mContext, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(mContext, "Registered Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void addCook(String user_code, String recipe_code, String cook_date, String tip){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("user_code", user_code);
+        cv.put("recipe_code", recipe_code);
+        cv.put("cook_date", cook_date);
+        cv.put("tip",tip);
+        long result = db.insert("cook", "null", cv);
+        if(result == -1){
+            Toast.makeText(mContext, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(mContext, "Saved Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void addVisit(String user_code, String recipe_code, int like){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("user_code", user_code);
+        cv.put("recipe_code", recipe_code);
+        cv.put("like",like);
+
+        long result = db.insert("visit", "null", cv);
+        if(result == -1){
+            Toast.makeText(mContext, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(mContext, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void deleteOneCook(String user_code, String recipe_code, String cook_date){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete("cook", "user_code=?"+"and"+"recipe_code=?"+"and"+"cook_date=?",
+                new String[]{user_code, recipe_code, cook_date});
+        if(result == -1){
+            Toast.makeText(mContext, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(mContext, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
         }
     }
 }

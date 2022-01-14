@@ -38,7 +38,6 @@ public class DatabaseAccess {
 
     //now lets create a method to query and return the result from database
 
-    //we will query for recipe_name by passing code
     public String getRecipeName(String code){
         c = db.rawQuery("select recipe_name from recipe where recipe_code = '"+code+"'", new String[]{});
         StringBuffer buffer = new StringBuffer();
@@ -59,4 +58,25 @@ public class DatabaseAccess {
         return buffer.toString();
     }
 
+    public Cursor readAllRecipe(){
+        String query = "SELECT * FROM recipe";
+        if(db != null){
+            c = db.rawQuery(query, null);
+        }
+        return c;
+    }
+   public Cursor readAllMaterials() {
+    String query = "SELECT * FROM materials";
+    if (db != null) {
+        c = db.rawQuery(query, null);
+    }
+        return c;
+    }
+    public Cursor readAllStep() {
+        String query = "SELECT * FROM step";
+        if (db != null) {
+            c = db.rawQuery(query, null);
+        }
+        return c;
+    }
 }

@@ -34,6 +34,6 @@
             android:layout_marginLeft="8dp"
             android:text="재료목록"
             android:textColor="#7A7A7A"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
     </LinearLayout>
 </LinearLayout>
