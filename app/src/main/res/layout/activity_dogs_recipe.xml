@@ -131,8 +131,9 @@
         android:id="@+id/tog_like"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@drawable/like_toggle"
         android:text="Like"
-        android:background="@drawable/empty_heart"
+        android:textOff=" "
         app:layout_constraintBottom_toTopOf="@+id/guidelineMid1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
