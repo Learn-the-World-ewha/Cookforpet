@@ -43,8 +43,7 @@ public class DogSearchResultActivity extends AppCompatActivity {
         //setting text to result field
         //rcplist.setTxt_rcp(rcp_name);
 
-        adapter.addItem(new RecipeItem(rcp_img,
-                rcp_name,"재료1, 재료2, 재료3, ..."));
+        adapter.addItem(new RecipeItem(rcp_img, rcp_name,"재료1, 재료2, 재료3, ..."));
         adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts//images//20190109//5c3580cf0f12d.png",
                 "흰살 생선 요리 -  소화력에 도움이 되는","재료4, 재료5, 재료6, ..."));
         recyclerView.setAdapter(adapter);
