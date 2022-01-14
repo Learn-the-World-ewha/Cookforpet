@@ -49,5 +49,14 @@ public class DatabaseAccess {
         return buffer.toString();
     }
 
+    public String getRecipeImg(String code){
+        c = db.rawQuery("select img_main from recipe where recipe_code = '"+code+"'", new String[]{});
+        StringBuffer buffer = new StringBuffer();
+        while(c.moveToNext()){
+            String recipeCode = c.getString(0);
+            buffer.append(""+recipeCode);
+        }
+        return buffer.toString();
+    }
 
 }
