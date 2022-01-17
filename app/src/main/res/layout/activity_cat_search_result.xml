@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CatSearchResultActivity">
+    tools:context=".DogSearchResultActivity">
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTop"
         android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         app:layout_constraintGuide_end="60dp" />
 
     <TextView
-        android:id="@+id/txt_cats"
+        android:id="@+id/txt_dogs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cat's"
@@ -81,126 +81,28 @@
         app:layout_constraintGuide_begin="172dp" />
     <ScrollView
         android:layout_width="350dp"
-        android:layout_height="452dp"
+        android:layout_height="500dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@id/guidelineMid2">
+        app:layout_constraintTop_toTopOf="@id/guidelineMid2"
+        android:maxHeight="500dp"
+        android:maxWidth="350dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageButton
-                    android:id="@+id/imgBtn_rcp1"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:scaleType="centerInside"
-                    android:layout_gravity="center_vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    tools:srcCompat="@tools:sample/avatars" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_vertical">
-                    <TextView
-                        android:id="@+id/txt_rcp1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:text="Recipe1"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"/>
-                    <TextView
-                        android:id="@+id/txt_mat1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:text="a, b, c ..."
-                        android:textColor="#7A7A7A"
-                        android:textSize="24sp"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageButton
-                    android:id="@+id/imgBtn_rcp2"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:scaleType="centerInside"
-                    android:layout_gravity="center_vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgBtn_rcp1"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    tools:srcCompat="@tools:sample/avatars" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_vertical">
-                    <TextView
-                        android:id="@+id/txt_rcp2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:text="Recipe2"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"/>
-                    <TextView
-                        android:id="@+id/txt_mat2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:text="d, e, f ..."
-                        android:textColor="#7A7A7A"
-                        android:textSize="24sp"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageButton
-                    android:id="@+id/imgBtn_rcp3"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:scaleType="centerInside"
-                    android:layout_gravity="center_vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imgBtn_rcp2"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    tools:srcCompat="@tools:sample/avatars" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_vertical">
-                    <TextView
-                        android:id="@+id/txt_rcp3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:text="Recipe3"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"/>
-                    <TextView
-                        android:id="@+id/txt_mat3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:text="g, h, i ..."
-                        android:textColor="#7A7A7A"
-                        android:textSize="24sp"/>
-                </LinearLayout>
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:id="@+id/recycler_rcp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <!--            <com.example.myapplication.RecipeList-->
+            <!--                android:id="@+id/rcplist"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content">-->
+            <!--            </com.example.myapplication.RecipeList>-->
         </LinearLayout>
     </ScrollView>
     <ImageButton
