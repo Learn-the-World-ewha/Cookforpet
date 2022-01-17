@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
@@ -58,25 +60,21 @@ public class DatabaseAccess {
         return buffer.toString();
     }
 
-    public Cursor readAllRecipe(){
-        String query = "SELECT * FROM recipe";
-        if(db != null){
-            c = db.rawQuery(query, null);
+    public ArrayList<String> getRecipeCode(String mat){
+        c = db.rawQuery("SELECT recipe_code" + " FROM materials" +
+                " WHERE mat_name='"+mat+"'", new String[]{});
+        ArrayList<String> code_list = new ArrayList<String>();
+        while(c.moveToNext()){
+            String recipeCode = c.getString(0);
+            code_list.add(recipeCode);
         }
-        return c;
+        return code_list;
     }
-   public Cursor readAllMaterials() {
-    String query = "SELECT * FROM materials";
-    if (db != null) {
-        c = db.rawQuery(query, null);
-    }
-        return c;
-    }
-    public Cursor readAllStep() {
-        String query = "SELECT * FROM step";
-        if (db != null) {
-            c = db.rawQuery(query, null);
-        }
-        return c;
+
+    public Integer getResultSum(String mat){
+        c = db.rawQuery("SELECT recipe_code" + " FROM materials" +
+                " WHERE mat_name='"+mat+"'", new String[]{});
+        Integer count = c.getCount();
+        return count;
     }
 }

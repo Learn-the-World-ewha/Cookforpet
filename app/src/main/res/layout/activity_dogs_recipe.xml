@@ -32,7 +32,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_end="30dp" />
     <TextView
-        android:id="@+id/txt_dogs"
+        android:id="@+id/txt_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Dog's"
@@ -48,7 +48,7 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@id/txt_dogs" />
+        app:layout_constraintTop_toBottomOf="@id/txt_type" />
 
     <ScrollView
         android:layout_width="350dp"
@@ -70,14 +70,59 @@
                 android:layout_marginTop="8dp"
                 tools:srcCompat="@color/black" />
             <TextView
+                android:id="@+id/txt_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:text="summary"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                />
+            <TextView
                 android:id="@+id/txt_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:text="3일 냉장보관 가능"
                 android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:textSize="18sp"/>
+                android:textSize="14sp"/>
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="소요시간:"
+                    android:textColor="#7a7a7a"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30분 이내"
+                    android:textColor="#673AB7"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="기대효과:"
+                    android:textColor="#7a7a7a"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/txt_eff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="다이어트"
+                    android:textColor="#673AB7"
+                    android:textSize="14sp"
+                    />
+            </LinearLayout>
+
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,12 +147,19 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:layout_marginTop="8dp"/>
-            <com.example.myapplication.StepList
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/steplist">
 
-            </com.example.myapplication.StepList>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recycler_step">
+
+            </androidx.recyclerview.widget.RecyclerView>
+<!--            <com.example.myapplication.StepList-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/steplist">-->
+
+<!--            </com.example.myapplication.StepList>-->
             <Button
                 android:id="@+id/btn_complete"
                 android:layout_width="wrap_content"
@@ -134,7 +186,16 @@
         android:background="@drawable/like_toggle"
         android:text="Like"
         android:textOff=" "
-        app:layout_constraintBottom_toTopOf="@+id/guidelineMid1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+    <TextView
+        android:id="@+id/txt_like"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="99"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tog_like"
+        app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@id/tog_like"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,11 +14,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/txt_rcp"
             android:layout_width="wrap_content"
@@ -26,14 +28,57 @@
             android:layout_marginLeft="8dp"
             android:text="레시피명"
             android:textColor="@color/black"
-            android:textSize="24sp"/>
-        <TextView
-            android:id="@+id/txt_mat"
+            android:textSize="24sp" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="재료목록"
-            android:textColor="#7A7A7A"
-            android:textSize="20sp"/>
+            android:layout_marginLeft="8dp">
+            <TextView
+                android:id="@+id/mat_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7A7A7A"
+                android:textSize="20sp"
+                android:text="1st">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7A7A7A"
+                android:textSize="20sp"
+                android:text=", ">
+            </TextView>
+            <TextView
+                android:id="@+id/mat_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7A7A7A"
+                android:textSize="20sp"
+                android:text="2nd">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7A7A7A"
+                android:textSize="20sp"
+                android:text=", ">
+            </TextView>
+            <TextView
+                android:id="@+id/mat_third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7A7A7A"
+                android:textSize="20sp"
+                android:text="3rd">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7A7A7A"
+                android:textSize="20sp"
+                android:text=" ...">
+            </TextView>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

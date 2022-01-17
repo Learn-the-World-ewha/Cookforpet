@@ -21,14 +21,16 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.Vi
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView img_url;
         TextView rcp_txt;
-        TextView mat_txt;
+        TextView mat_1st, mat_2nd, mat_3rd;
 
         public ViewHolder(View itemView, final OnRecipeItemClickListener listener){
             super(itemView);
 
             img_url = itemView.findViewById(R.id.img_rcp);
             rcp_txt = itemView.findViewById(R.id.txt_rcp);
-            mat_txt = itemView.findViewById(R.id.txt_mat);
+            mat_1st = itemView.findViewById(R.id.mat_first);
+            mat_2nd = itemView.findViewById(R.id.mat_second);
+            mat_3rd = itemView.findViewById(R.id.mat_third);
 
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -60,8 +62,9 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.Vi
                 .into(holder.img_url);
 
         holder.rcp_txt.setText(item.getRcp_txt());
-        holder.mat_txt.setText(item.getMat_txt());
-
+        holder.mat_1st.setText(item.getMat_1st());
+        holder.mat_2nd.setText(item.getMat_2nd());
+        holder.mat_3rd.setText(item.getMat_3rd());
     }
 
     public void setOnItemClickListener(OnRecipeItemClickListener listener){
