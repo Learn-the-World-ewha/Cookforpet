@@ -9,7 +9,7 @@ public class RecipeItem {
     String mat_2nd;
     String mat_3rd;
 
-    public RecipeItem(String img_url, String rcp_txt, String mat_1st, String mat_2nd, String mat_3rd){
+    public RecipeItem(String img_url, String rcp_txt, String mat_1st){
         this.img_url = img_url;
         this.rcp_txt = rcp_txt;
         this.mat_1st = mat_1st;
