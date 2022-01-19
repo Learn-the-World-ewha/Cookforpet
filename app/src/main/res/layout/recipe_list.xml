@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/img_rcp"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,18 +25,18 @@
             android:id="@+id/txt_rcp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="6dp"
             android:text="레시피명"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/mat_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="6dp"
                 android:textColor="#7A7A7A"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:text="재료 목록">
             </TextView>
 

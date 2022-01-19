@@ -41,26 +41,6 @@ public class DatabaseAccess {
 
     //now lets create a method to query and return the result from database
 
-    public String getRecipeName(String code){
-        c = db.rawQuery("select recipe_name from recipe where recipe_code = '"+code+"'", new String[]{});
-        StringBuffer buffer = new StringBuffer();
-        while(c.moveToNext()){
-            String recipeCode = c.getString(0);
-            buffer.append(""+recipeCode);
-        }
-        return buffer.toString();
-    }
-
-    public String getRecipeImg(String code){
-        c = db.rawQuery("select img_main from recipe where recipe_code = '"+code+"'", new String[]{});
-        StringBuffer buffer = new StringBuffer();
-        while(c.moveToNext()){
-            String recipeCode = c.getString(0);
-            buffer.append(""+recipeCode);
-        }
-        return buffer.toString();
-    }
-
     public ArrayList<String> getRecipeCode(String mat){
         c = db.rawQuery("SELECT recipe_code" + " FROM materials" +
                 " WHERE mat_name='"+mat+"'order by recipe_code", new String[]{});
@@ -116,14 +96,16 @@ public class DatabaseAccess {
 
     public ArrayList<ArrayList<String>> getSteplist(String code){
         ArrayList<ArrayList<String>> Step_list = new ArrayList<ArrayList<String>>();
-        c = db.rawQuery("select step_num, step_txt, img_step from step where recipe_code = '"
+        c = db.rawQuery("select step_txt, img_step from step where recipe_code = '"
                 +code+"' order by step_num", new String[]{});
+        Integer i = 0;
         while(c.moveToNext()){
             ArrayList<String> tmp = new ArrayList<>();
+            tmp.add(i.toString());
             tmp.add(c.getString(0));
             tmp.add(c.getString(1));
-            tmp.add(c.getString(2));
             Step_list.add(tmp);
+            i++;
         }
         return Step_list;
     }
@@ -139,15 +121,17 @@ public class DatabaseAccess {
                 ArrayList<String> one_rcp = new ArrayList<String>();
                 one_rcp.add(c.getString(0));    //배열에 이미지 문자열 저장
                 one_rcp.add(c.getString(1));    //배열에 레시피명 문자열 저장
+
+                StringBuilder rcp_mat = new StringBuilder();
+                c2 = db.rawQuery("select mat_name from materials where recipe_code = '"+code+
+                        "'order by mat_num", new String[]{});
+                while(c2.moveToNext()){
+                    rcp_mat.append(c2.getString(0));
+                    rcp_mat.append(", ");
+                }
+                one_rcp.add(rcp_mat.toString());
                 Recipe_list.add(one_rcp);
             }
-//            String rcp_mat="";
-//            c2 = db.rawQuery("select mat_name from materials where recipe_code = '"+code+
-//                    "'order by mat_num", new String[]{});
-//            while(c2.moveToNext()){
-//                rcp_mat.concat(c2.getString(0));
-//            }
-//            one_rcp.add(rcp_mat);
         }
         return Recipe_list;
     }

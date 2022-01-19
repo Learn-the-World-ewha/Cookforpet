@@ -34,11 +34,11 @@ public class StepItemAdapter extends RecyclerView.Adapter<StepItemAdapter.ViewHo
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.step_list, parent, false);
 
-        return new ViewHolder(itemView);
+        return new StepItemAdapter.ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StepItemAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         StepItem item = items.get(position);
 
         Glide.with(holder.itemView.getContext())

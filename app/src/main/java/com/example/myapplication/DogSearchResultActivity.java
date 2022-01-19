@@ -27,7 +27,7 @@ public class DogSearchResultActivity extends AppCompatActivity {
 
     RecyclerView recycler_rcp;
     RecipeItemAdapter adapter;
-
+    ArrayList<String> recipe_code;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +55,14 @@ public class DogSearchResultActivity extends AppCompatActivity {
         recycler_rcp.setLayoutManager(layoutManager);
         adapter = new RecipeItemAdapter();
 
-        ArrayList<String> recipe_code= dbAc.getRecipeCode(search);
+        recipe_code= dbAc.getRecipeCode(search);
         ArrayList<ArrayList<String>> Recipelist = dbAc.getRecipelist(recipe_code);
         for(int i=0; i<Recipelist.size(); i++){
-            adapter.addItem(new RecipeItem(Recipelist.get(i).get(0), Recipelist.get(i).get(1), null));
+            adapter.addItem(new RecipeItem(Recipelist.get(i).get(0), Recipelist.get(i).get(1), Recipelist.get(i).get(2)));
         }
         recycler_rcp.setAdapter(adapter);
 
+        dbAc.close();
 
         adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
             @Override

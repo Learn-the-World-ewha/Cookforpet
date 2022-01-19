@@ -13,8 +13,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.ViewHolder>
-            implements OnRecipeItemClickListener {
+public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.ViewHolder> {
     ArrayList<RecipeItem> items = new ArrayList<RecipeItem>();
     OnRecipeItemClickListener listener;
 
@@ -34,9 +33,9 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.Vi
                 @Override
                 public void onClick(View view){
                     int position = getAdapterPosition();
-                    if (listener!=null){
-                        listener.onItemClick(ViewHolder.this, view, position);
-                    }
+                        if (listener!=null){
+                            listener.onItemClick(ViewHolder.this, view, position);
+                        }
                 }
             });
         }
@@ -48,7 +47,7 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.Vi
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.recipe_list, parent, false);
 
-        return new RecipeItemAdapter.ViewHolder(itemView, this);
+        return new RecipeItemAdapter.ViewHolder(itemView, listener);
     }
 
     @Override
@@ -65,13 +64,6 @@ public class RecipeItemAdapter extends RecyclerView.Adapter<RecipeItemAdapter.Vi
 
     public void setOnItemClickListener(OnRecipeItemClickListener listener){
         this.listener = listener;
-    }
-
-    @Override
-    public void onItemClick(ViewHolder holder, View view, int position){
-        if (listener != null){
-            listener.onItemClick(holder, view, position);
-        }
     }
 
     @Override
