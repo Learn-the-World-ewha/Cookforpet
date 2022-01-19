@@ -10,6 +10,7 @@ import android.widget.Button;
 public class RegisterActivity extends AppCompatActivity {
 
     private Button btn_register;
+    private boolean validate = false; //중복 체크
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
