@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CatSearchResultActivity extends AppCompatActivity {
+public class SearchResultActivity extends AppCompatActivity {
 
     private TextView txt_search, txt_result;
     private ImageButton imgBtn_home;
@@ -24,7 +24,7 @@ public class CatSearchResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cat_search_result);
+        setContentView(R.layout.activity_dog_search_result);
 
         //검색창에 검색어 유지
         txt_search = findViewById(R.id.txt_search);
@@ -51,7 +51,9 @@ public class CatSearchResultActivity extends AppCompatActivity {
         recipe_code= dbAc.getRecipeCode(search);
         ArrayList<ArrayList<String>> Recipelist = dbAc.getRecipelist(recipe_code);
         for(int i=0; i<Recipelist.size(); i++){
-            adapter.addItem(new RecipeItem(Recipelist.get(i).get(0), Recipelist.get(i).get(1), Recipelist.get(i).get(2)));
+            adapter.addItem(new RecipeItem(Recipelist.get(i).get(0), Recipelist.get(i).get(1), Recipelist.get(i).get(8), Recipelist.get(i).get(2),
+                    Recipelist.get(i).get(3), Recipelist.get(i).get(4), Recipelist.get(i).get(5), Recipelist.get(i).get(6),
+                    Recipelist.get(i).get(7)));
         }
         recycler_rcp.setAdapter(adapter);
 
@@ -61,8 +63,16 @@ public class CatSearchResultActivity extends AppCompatActivity {
             @Override
             public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
                 RecipeItem item = adapter.getItem(position);
-                Intent intent = new Intent(CatSearchResultActivity.this, CatsRecipeActivity.class);
+                Intent intent = new Intent(SearchResultActivity.this, RecipeActivity.class);
                 intent.putExtra("recipe_code", recipe_code.get(position));
+                intent.putExtra("recipe_name",item.rcp_txt);
+                intent.putExtra("img_url",item.img_url);
+                intent.putExtra("recipe_sum", item.txt_sum);
+                intent.putExtra("recipe_type", item.txt_type);
+                intent.putExtra("recipe_time", item.txt_time);
+                intent.putExtra("recipe_tip",item.txt_tip);
+                intent.putExtra("recipe_eff",item.txt_eff);
+                intent.putExtra("recipe_like",item.txt_like);
                 startActivity(intent);  // activity 이동
             }
         });
@@ -71,7 +81,7 @@ public class CatSearchResultActivity extends AppCompatActivity {
         imgBtn_home.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(CatSearchResultActivity.this, TypeActivity.class);
+                Intent intent = new Intent(SearchResultActivity.this, SubMainActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });
@@ -80,7 +90,7 @@ public class CatSearchResultActivity extends AppCompatActivity {
         imgBtn_user.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(CatSearchResultActivity.this, UserActivity.class);
+                Intent intent = new Intent(SearchResultActivity.this, UserActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });

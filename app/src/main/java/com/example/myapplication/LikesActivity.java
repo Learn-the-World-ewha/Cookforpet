@@ -20,7 +20,7 @@ public class LikesActivity extends AppCompatActivity {
         imgBtn_rcp1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(LikesActivity.this, DogsRecipeActivity.class);
+                Intent intent = new Intent(LikesActivity.this, RecipeActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });

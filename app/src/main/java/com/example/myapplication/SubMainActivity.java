@@ -1,22 +1,16 @@
 package com.example.myapplication;
 
-import static android.view.View.*;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class CatsMainActivity extends AppCompatActivity {
+public class SubMainActivity extends AppCompatActivity {
     private ImageButton imgBtn_search;
     private EditText editTxt_search;
     private String search;
@@ -26,7 +20,7 @@ public class CatsMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cats_main);
+        setContentView(R.layout.activity_dogs_main);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_rcp);
         LinearLayoutManager layoutManager =
@@ -40,7 +34,7 @@ public class CatsMainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
                 RecipeItem item = adapter.getItem(position);
-                Intent intent = new Intent(CatsMainActivity.this, CatSearchResultActivity.class);
+                Intent intent = new Intent(SubMainActivity.this, SearchResultActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });
@@ -50,7 +44,7 @@ public class CatsMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 search = editTxt_search.getText().toString();
-                Intent intent = new Intent(CatsMainActivity.this, CatSearchResultActivity.class);
+                Intent intent = new Intent(SubMainActivity.this, SearchResultActivity.class);
                 intent.putExtra("search",search);
                 startActivity(intent);  // activity 이동
             }
@@ -60,7 +54,7 @@ public class CatsMainActivity extends AppCompatActivity {
         imgBtn_home.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(CatsMainActivity.this, TypeActivity.class);
+                Intent intent = new Intent(SubMainActivity.this, SubMainActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });
@@ -68,7 +62,7 @@ public class CatsMainActivity extends AppCompatActivity {
         imgBtn_user.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(CatsMainActivity.this, UserActivity.class);
+                Intent intent = new Intent(SubMainActivity.this, UserActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });

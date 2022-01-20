@@ -23,28 +23,16 @@
             android:name=".LikesActivity"
             android:exported="false" />
         <activity
-            android:name=".DogsRecipeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CatsRecipeActivity"
+            android:name=".RecipeActivity"
             android:exported="false" />
         <activity
             android:name=".UserActivity"
             android:exported="false" />
         <activity
-            android:name=".CatSearchResultActivity"
+            android:name=".SearchResultActivity"
             android:exported="false" />
         <activity
-            android:name=".CatsMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TypeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DogSearchResultActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DogsMainActivity"
+            android:name=".SubMainActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

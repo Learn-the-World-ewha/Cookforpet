@@ -75,22 +75,24 @@ public class DatabaseAccess {
     public String getLikeSum(String code){
         Integer likesum=0;
         c = db.rawQuery("select like_sum from recipe where recipe_code = '"+code, new String[]{});
-        while(c.moveToNext())
+        while(c.moveToNext()) {
             likesum = c.getInt(0);
+        }
         return likesum.toString();
     }
+
     public ArrayList<String> getRecipeInfo(String code){
         ArrayList<String> Recipe_Info = new ArrayList<String>();
-        c = db.rawQuery("select recipe_name, recipe_sum, type, cook_time, tip, img_main, effect"+
+        c = db.rawQuery("select recipe_sum, type, cook_time, tip, effect, like_sum"+
                 "from recipe where recipe_code = '"+code, new String[]{});
         while(c.moveToNext()) {
-            Recipe_Info.add(c.getString(0));    //recipe_name 저장
-            Recipe_Info.add(c.getString(1));    //recipe_sum 저장
-            Recipe_Info.add(c.getString(2));    //type 저장
-            Recipe_Info.add(c.getString(3));    //cook_time 저장
-            Recipe_Info.add(c.getString(4));    //tip 저장
-            Recipe_Info.add(c.getString(5));    //img_main 저장
-            Recipe_Info.add(c.getString(6));    //effect 저장
+            Recipe_Info.add(c.getString(0));    //recipe_sum 저장
+            Recipe_Info.add(c.getString(1));    //type 저장
+            Recipe_Info.add(c.getString(2));    //cook_time 저장
+            Recipe_Info.add(c.getString(3));    //tip 저장
+            Recipe_Info.add(c.getString(4));    //effect 저장
+            Integer like = c.getInt(5);
+            Recipe_Info.add(like.toString());
         }
         return Recipe_Info;
     }
@@ -116,12 +118,19 @@ public class DatabaseAccess {
 
         for (int i=0; i<codes.size(); i++){
             String code = codes.get(i);
-            c = db.rawQuery("select img_main, recipe_name from recipe where recipe_code = '"+code+
-                    "'order by recipe_code", new String[]{});
+            c = db.rawQuery("select img_main, recipe_name, recipe_sum, type, cook_time, tip, effect, like_sum"
+                    + " from recipe where recipe_code = '"+code+ "'order by recipe_code", new String[]{});
             while(c.moveToNext()){
                 ArrayList<String> one_rcp = new ArrayList<String>();
                 one_rcp.add(c.getString(0));    //배열에 이미지 문자열 저장
                 one_rcp.add(c.getString(1));    //배열에 레시피명 문자열 저장
+                one_rcp.add(c.getString(2));    //배열에 레시피 요약문 저장
+                one_rcp.add(c.getString(3));    //배열에 레시피 종류 저장
+                one_rcp.add(c.getString(4));    //배열에 조리시간 저장
+                one_rcp.add(c.getString(5));    //배열에 팁 저장
+                one_rcp.add(c.getString(6));    //배열에 효과 저장
+                Integer tmp = c.getInt(7);
+                one_rcp.add(tmp.toString());                //배열에 좋아요수 저장
 
                 StringBuilder rcp_mat = new StringBuilder();
                 c2 = db.rawQuery("select mat_name from materials where recipe_code = '"+code+
@@ -130,7 +139,8 @@ public class DatabaseAccess {
                     rcp_mat.append(c2.getString(0));
                     rcp_mat.append(", ");
                 }
-                one_rcp.add(rcp_mat.toString());
+                one_rcp.add(rcp_mat.toString());            //배열에 재료목록 저장
+
                 Recipe_list.add(one_rcp);
             }
         }
