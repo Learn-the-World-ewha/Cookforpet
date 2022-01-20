@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class DogsMainActivity extends AppCompatActivity {
-    String val = "";
     private ImageButton imgBtn_search;
     private EditText editTxt_search;
     private String search;
@@ -45,12 +44,6 @@ public class DogsMainActivity extends AppCompatActivity {
                 startActivity(intent);  // activity 이동
             }
         });
-
-//        RecipeList rcplist = findViewById(R.id.rcplist);
-//        rcplist.setImg_rcp(R.drawable.ic_launcher_foreground);
-//        rcplist.setTxt_rcp("Recipe");
-//        rcplist.setTxt_mat("재료1, 재료2, 재료3, ...");
-
         editTxt_search = findViewById(R.id.editTxt_search);
         imgBtn_search = findViewById(R.id.imgBtn_search);
         imgBtn_search.setOnClickListener(new View.OnClickListener(){

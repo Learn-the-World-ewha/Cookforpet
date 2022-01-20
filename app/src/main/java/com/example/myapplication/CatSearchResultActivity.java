@@ -14,34 +14,48 @@ import java.util.ArrayList;
 
 public class CatSearchResultActivity extends AppCompatActivity {
 
-    private TextView txt_search;
-    private ImageButton imgBtn_rcp1;
+    private TextView txt_search, txt_result;
     private ImageButton imgBtn_home;
     private ImageButton imgBtn_user;
-    private ArrayList<RecipeItem> mRecipeItems;
 
-    ArrayList<String> recipe_name, recipe_code;
-    ArrayList<String> mat_name;
-    DataBaseHelper DB;
-    RecyclerView recyclerView;
+    RecyclerView recycler_rcp;
     RecipeItemAdapter adapter;
-
+    ArrayList<String> recipe_code;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat_search_result);
 
+        //검색창에 검색어 유지
         txt_search = findViewById(R.id.txt_search);
         Intent intent = getIntent();
         String search = intent.getStringExtra("search");
         txt_search.setText(search);
 
-        recyclerView = findViewById(R.id.recycler_rcp);
+        //DB open
+        DatabaseAccess dbAc = DatabaseAccess.getInstance(getApplicationContext());
+        dbAc.open();
+
+        //결과값 갯수 출력
+        Integer count = dbAc.getResultSum(search);
+        txt_result = findViewById(R.id.txt_result);
+        txt_result.setText(count.toString());
+
+        //레시피 목록 출력
+        recycler_rcp = findViewById(R.id.recycler_rcp);
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
+        recycler_rcp.setLayoutManager(layoutManager);
         adapter = new RecipeItemAdapter();
-        recyclerView.setAdapter(adapter);
+
+        recipe_code= dbAc.getRecipeCode(search);
+        ArrayList<ArrayList<String>> Recipelist = dbAc.getRecipelist(recipe_code);
+        for(int i=0; i<Recipelist.size(); i++){
+            adapter.addItem(new RecipeItem(Recipelist.get(i).get(0), Recipelist.get(i).get(1), Recipelist.get(i).get(2)));
+        }
+        recycler_rcp.setAdapter(adapter);
+
+        dbAc.close();
 
         adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
             @Override
@@ -49,18 +63,9 @@ public class CatSearchResultActivity extends AppCompatActivity {
                 RecipeItem item = adapter.getItem(position);
                 Intent intent = new Intent(CatSearchResultActivity.this, CatsRecipeActivity.class);
                 intent.putExtra("recipe_code", recipe_code.get(position));
-                startActivity(intent); //activity 이동
+                startActivity(intent);  // activity 이동
             }
         });
-
-//        imgBtn_rcp1 = findViewById(R.id.imgBtn_rcp1);
-//        imgBtn_rcp1.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent intent = new Intent(CatSearchResultActivity.this, CatsRecipeActivity.class);
-//                startActivity(intent);  // activity 이동
-//            }
-//        });
 
         imgBtn_home = findViewById(R.id.imgBtn_home);
         imgBtn_home.setOnClickListener(new View.OnClickListener(){
@@ -79,5 +84,6 @@ public class CatSearchResultActivity extends AppCompatActivity {
                 startActivity(intent);  // activity 이동
             }
         });
+
     }
 }

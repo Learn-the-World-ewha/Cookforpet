@@ -1,61 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DogsRecipeActivity">
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineTop"
-        android:layout_width="wrap_content"
+    tools:context=".DogsRecipeActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="10dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="30dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="30dp" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="30dp" />
-    <TextView
-        android:id="@+id/txt_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dog's"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
-    <TextView
-        android:id="@+id/txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="소고기와 양배추"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@id/txt_type" />
-
+        >
+        <TextView
+            android:id="@+id/txt_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Dog's"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            />
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="소고기와 양배추"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ToggleButton
+                android:id="@+id/tog_like"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/like_toggle"
+                android:text="Like"
+                android:textOff=" "
+                />
+            <TextView
+                android:id="@+id/txt_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="99"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
     <ScrollView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@id/guidelineMid1">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,14 +63,16 @@
             <ImageView
                 android:id="@+id/img_main"
                 android:layout_width="350dp"
-                android:layout_height="142dp"
+                android:layout_height="140dp"
                 android:layout_gravity="center"
+                android:scaleType="centerInside"
                 android:layout_marginTop="8dp"
                 tools:srcCompat="@color/black" />
             <TextView
                 android:id="@+id/txt_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_marginVertical="5dp"
                 android:text="summary"
                 android:textColor="@color/black"
@@ -82,6 +82,7 @@
                 android:id="@+id/txt_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_marginVertical="5dp"
                 android:text="3일 냉장보관 가능"
                 android:textColor="@color/black"
@@ -138,8 +139,8 @@
                 android:layout_height="wrap_content"
                 android:text="조리 순서"
                 android:textColor="@color/black"
-                android:textSize="24sp"
-                android:layout_marginTop="8dp"/>
+                android:textSize="20sp"
+                android:layout_marginVertical="5dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
@@ -158,30 +159,5 @@
         </LinearLayout>
     </ScrollView>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineMid1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="96dp" />
 
-    <ToggleButton
-        android:id="@+id/tog_like"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/like_toggle"
-        android:text="Like"
-        android:textOff=" "
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
-    <TextView
-        android:id="@+id/txt_like"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="99"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@id/tog_like"
-        app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@id/tog_like"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

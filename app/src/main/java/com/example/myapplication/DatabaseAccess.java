@@ -72,24 +72,25 @@ public class DatabaseAccess {
         return Mat_list;
     }
 
-    public Integer getLikeSum(String code){
-        Integer likesum;
+    public String getLikeSum(String code){
+        Integer likesum=0;
         c = db.rawQuery("select like_sum from recipe where recipe_code = '"+code, new String[]{});
-        likesum = c.getInt(0);
-        return likesum;
+        while(c.moveToNext())
+            likesum = c.getInt(0);
+        return likesum.toString();
     }
     public ArrayList<String> getRecipeInfo(String code){
         ArrayList<String> Recipe_Info = new ArrayList<String>();
         c = db.rawQuery("select recipe_name, recipe_sum, type, cook_time, tip, img_main, effect"+
                 "from recipe where recipe_code = '"+code, new String[]{});
         while(c.moveToNext()) {
-            Recipe_Info.add(c.getString(0));
-            Recipe_Info.add(c.getString(1));
-            Recipe_Info.add(c.getString(2));
-            Recipe_Info.add(c.getString(3));
-            Recipe_Info.add(c.getString(4));
-            Recipe_Info.add(c.getString(5));
-            Recipe_Info.add(c.getString(6));
+            Recipe_Info.add(c.getString(0));    //recipe_name 저장
+            Recipe_Info.add(c.getString(1));    //recipe_sum 저장
+            Recipe_Info.add(c.getString(2));    //type 저장
+            Recipe_Info.add(c.getString(3));    //cook_time 저장
+            Recipe_Info.add(c.getString(4));    //tip 저장
+            Recipe_Info.add(c.getString(5));    //img_main 저장
+            Recipe_Info.add(c.getString(6));    //effect 저장
         }
         return Recipe_Info;
     }
@@ -100,12 +101,12 @@ public class DatabaseAccess {
                 +code+"' order by step_num", new String[]{});
         Integer i = 0;
         while(c.moveToNext()){
-            ArrayList<String> tmp = new ArrayList<>();
-            tmp.add(i.toString());
-            tmp.add(c.getString(0));
-            tmp.add(c.getString(1));
-            Step_list.add(tmp);
             i++;
+            ArrayList<String> tmp = new ArrayList<String>();
+            tmp.add(i.toString());                  //step번호 저장
+            tmp.add(c.getString(0));    //step_txt 저장
+            tmp.add(c.getString(1));    //img_step 저장
+            Step_list.add(tmp);
         }
         return Step_list;
     }

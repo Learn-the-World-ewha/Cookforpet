@@ -122,11 +122,6 @@
                 android:id="@+id/recycler_rcp">
 
             </androidx.recyclerview.widget.RecyclerView>
-            <!--            <com.example.myapplication.RecipeList-->
-            <!--                android:id="@+id/rcplist"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content">-->
-            <!--            </com.example.myapplication.RecipeList>-->
         </LinearLayout>
     </ScrollView>
 

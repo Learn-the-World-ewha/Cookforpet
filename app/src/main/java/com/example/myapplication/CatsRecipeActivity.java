@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class CatsRecipeActivity extends AppCompatActivity {
 
-    DataBaseHelper DB;
     RecyclerView recycler_rcp, recycler_mat;
     TextView txt_title, txt_tip;
 
@@ -31,10 +30,6 @@ public class CatsRecipeActivity extends AppCompatActivity {
         adapter.addItem(new MaterialItem("양배추", "200g"));
         recycler_mat.setAdapter(adapter);
 
-        StepList steplist = findViewById(R.id.steplist);
-        steplist.setImg_step(R.drawable.ic_launcher_foreground);
-        steplist.setTxt_stepNum("1");
-        steplist.setTxt_step("양파와 닭고기를 잘게 썰어주세요.");
     }
     public void onButton1Clicked(View v) {
         Toast.makeText(this, "My refrigerator에 추가되었습니다.", Toast.LENGTH_LONG).show();

@@ -1,18 +1,22 @@
 package com.example.myapplication;
 
+import static android.view.View.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class CatsMainActivity extends AppCompatActivity {
-
-    String val = "";
     private ImageButton imgBtn_search;
     private EditText editTxt_search;
     private String search;
@@ -29,7 +33,7 @@ public class CatsMainActivity extends AppCompatActivity {
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         RecipeItemAdapter adapter = new RecipeItemAdapter();
-        adapter.addItem(new RecipeItem("https://recipe.bom.co.kr/uploads/posts//images//20190109//5c354090b2189.png", "고양이 닭고기 소고기 볶음 -  체중조절에 효과적인", "다진 소고기, 올리브추 오일, 닭가슴살, 양배"));
+        // recipeItem 넣어야함
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
@@ -37,10 +41,9 @@ public class CatsMainActivity extends AppCompatActivity {
             public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
                 RecipeItem item = adapter.getItem(position);
                 Intent intent = new Intent(CatsMainActivity.this, CatSearchResultActivity.class);
-                startActivity(intent); //activity 이동
+                startActivity(intent);  // activity 이동
             }
         });
-
         editTxt_search = findViewById(R.id.editTxt_search);
         imgBtn_search = findViewById(R.id.imgBtn_search);
         imgBtn_search.setOnClickListener(new View.OnClickListener(){
@@ -61,7 +64,6 @@ public class CatsMainActivity extends AppCompatActivity {
                 startActivity(intent);  // activity 이동
             }
         });
-
         imgBtn_user = findViewById(R.id.imgBtn_user);
         imgBtn_user.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -70,5 +72,23 @@ public class CatsMainActivity extends AppCompatActivity {
                 startActivity(intent);  // activity 이동
             }
         });
+
+//    25~마지막줄은 수정해야 함. 미완성 레시피 추천 함수임.
+//            public void getVal(); {
+//
+//                DatabaseHelper dbHelper = new DatabaseHelper(this);
+//                SQLiteDatabase db = dbHelper.getReadableDatabase();
+//
+//                Cursor cursor = db.rawQuery("SELECT * FROM recipe_ingredient where RECIPE_ID = 181",null);
+//                //" and name = ?",new String[]{"홍길동"});
+//                while (cursor.moveToNext())
+//                {
+//                    val += cursor.getString(2)+", ";
+//
+//                }
+//                sqlresult.setText("재료: "+val);
+//                cursor.close();
+//                dbHelper.close();
+//            }
     }
 }

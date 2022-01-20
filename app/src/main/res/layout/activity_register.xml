@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="54dp" />
+        app:layout_constraintGuide_begin="10dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineStart"
@@ -32,8 +32,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="54dp" />
+        app:layout_constraintGuide_end="30dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMid1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="351dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMid2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="301dp" />
     <TextView
         android:id="@+id/txt_register"
         android:layout_width="wrap_content"
@@ -59,7 +72,7 @@
                 android:id="@+id/editTxt_name"
                 android:layout_width="350dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="88dp"
+                android:layout_marginTop="66dp"
                 android:background="@drawable/edge"
                 android:ems="10"
                 android:hint="이름을 입력하세요"
@@ -139,20 +152,6 @@
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@id/editTxt_pwd" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineMid1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="383dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineMid2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="429dp" />
-
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="wrap_content"
@@ -208,16 +207,13 @@
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toTopOf="@+id/guidelineMid2" />
+
             <RadioGroup
                 android:id="@+id/rGroup_effect"
-                android:layout_width="265dp"
+                android:layout_width="275dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/btn_register"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
-                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
-                app:layout_constraintTop_toTopOf="@id/guidelineMid2">
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"

@@ -90,12 +90,6 @@
                     android:id="@+id/recycler_mat">
 
                 </androidx.recyclerview.widget.RecyclerView>
-                <!--                <com.example.myapplication.MatList-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:id="@+id/matlist">-->
-
-                <!--                </com.example.myapplication.MatList>-->
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -104,12 +98,7 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:layout_marginTop="8dp"/>
-            <com.example.myapplication.StepList
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/steplist">
 
-            </com.example.myapplication.StepList>
             <Button
                 android:id="@+id/btn_complete"
                 android:layout_width="wrap_content"
