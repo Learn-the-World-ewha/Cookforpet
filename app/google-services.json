@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "22953405650",
+    "firebase_url": "https://cookforpet-7c5af-default-rtdb.firebaseio.com",
+    "project_id": "cookforpet-7c5af",
+    "storage_bucket": "cookforpet-7c5af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22953405650:android:5ad4af5300212d8cd8110b",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22953405650-3scp7mq0ooolasav0mkp36q0njinkgee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0qXEOUKc5ycfsq_BtrBmswIVKp1TlqxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22953405650-3scp7mq0ooolasav0mkp36q0njinkgee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
