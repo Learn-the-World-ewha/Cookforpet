@@ -59,10 +59,11 @@
         <entry key="app/src/main/res/layout/activity_dog_search_result.xml" value="0.259997176071091" />
         <entry key="app/src/main/res/layout/activity_dogs_main.xml" value="0.13703140830800406" />
         <entry key="app/src/main/res/layout/activity_dogs_recipe.xml" value="0.23493234014440242" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.26811594202898553" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28177083333333336" />
         <entry key="app/src/main/res/layout/activity_ref_detail.xml" value="0.28177083333333336" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_refrigerator.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register2.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/mat_list.xml" value="0.28177083333333336" />
         <entry key="app/src/main/res/layout/recipe_list.xml" value="0.28177083333333336" />
