@@ -17,14 +17,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "register";
     EditText mEmailidText, mPasswordText, mPasswordcheckText, mName;
-    Button mregisterBtn;
+    Button mregisterBtn, mCheckBtn;
     private FirebaseAuth firebaseAuth; //파이어베이스 인증처리
     private DatabaseReference reference; //실시간 데이터베이스
     private boolean validate = false; //중복 체크
@@ -38,11 +40,38 @@ public class RegisterActivity extends AppCompatActivity {
         reference= FirebaseDatabase.getInstance().getReference("Cookforpet");
 
         mEmailidText=findViewById(R.id.editTxt_id);
+        mCheckBtn=findViewById(R.id.btn_check);
         mPasswordText=findViewById(R.id.editTxt_pwd);
         mPasswordcheckText=findViewById(R.id.editTxt_pwd2);
         mName=findViewById(R.id.editTxt_name);
         mregisterBtn=findViewById(R.id.btn_register);
 
+        //아이디 중복 체크 코드
+        mCheckBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(RegisterActivity.this, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
+            }
+//            reference.child("Cookforpet").child(mEmailidText.getText().toString()).child("id").addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onClick(@NonNull DataSnapshot snapshot) {
+//                    String value = snapshot.getValue(String.class);
+//
+//                    if(value!=null){
+//                        Toast.makeText(getApplicationContext(), "이미 존재하는 아이디입니다.", Toast.LENGTH_SHORT).show();
+//                    }
+//                    else{
+//
+//
+//                    }
+//
+//
+//
+//                }
+//            })
+        });
+
+        // 회원가입 버튼을 눌렀을 때
         mregisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 UserAccount account=new UserAccount();
                                 account.setEmailid(user.getEmail());
                                 account.setPwd(pwd);
-                                account.setIdToken((user.getUid()));
+                                account.setIdToken(user.getUid());
 
                                 reference.child("UserAccount").child(user.getUid()).setValue(account);
 

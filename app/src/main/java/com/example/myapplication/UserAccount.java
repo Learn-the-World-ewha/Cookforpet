@@ -11,7 +11,7 @@ public class UserAccount {
         return emailid;
     }
 
-    public void setEmailid(String id) { this.emailid = emailid; }
+    public void setEmailid(String emailid) { this.emailid = emailid; }
 
     public String getPwd() { return pwd; }
 
