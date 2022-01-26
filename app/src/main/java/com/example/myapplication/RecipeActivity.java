@@ -1,18 +1,17 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -31,6 +30,31 @@ public class RecipeActivity extends AppCompatActivity {
     String recipe_type, recipe_tip, recipe_sum, recipe_time, recipe_like,recipe_eff;
     MaterialItemAdapter adapter;
     StepItemAdapter adapter2;
+    Intent intent;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_actionbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int curId = item.getItemId();
+        switch(curId){
+            case R.id.menu_home:
+                intent = new Intent(RecipeActivity.this, SubMainActivity.class);
+                startActivity(intent);  // activity 이동
+                break;
+            case R.id.menu_user:
+                intent = new Intent(RecipeActivity.this, UserActivity.class);
+                startActivity(intent);  // activity 이동
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +102,6 @@ public class RecipeActivity extends AppCompatActivity {
         txt_like.setText(recipe_like);  //like 출력
 
 
-
         //재료 리스트 출력
         recycler_mat = findViewById(R.id.recycler_mat);
         LinearLayoutManager layoutManager =
@@ -105,6 +128,8 @@ public class RecipeActivity extends AppCompatActivity {
             adapter2.addItem(new StepItem(Steplist.get(i).get(0), Steplist.get(i).get(1), Steplist.get(i).get(2)));
         }
         recycler_step.setAdapter(adapter2);
+
+
 
         databaseAccess.close();
     }

@@ -1,145 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SubMainActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineTop"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="10dp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="30dp" />
+        <EditText
+            android:id="@+id/editTxt_search"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edge"
+            android:ems="10"
+            android:hint="Search"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColorHint="#7A7A7A"
+            android:textSize="16sp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="30dp" />
+        <ImageButton
+            android:id="@+id/imgBtn_search"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#000000"
+            android:padding="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:srcCompat="@android:drawable/ic_menu_search"
+            app:tint="#FFFFFF" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="60dp" />
-
-<LinearLayout
-    android:id="@+id/linearLayout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="10dp"
-    app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
-    app:layout_constraintStart_toStartOf="@id/guidelineStart"
-    app:layout_constraintTop_toTopOf="@+id/guidelineTop">
-
-    <EditText
-        android:id="@+id/editTxt_search"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center_vertical"
-        android:background="@drawable/edge"
-        android:ems="10"
-        android:hint="Search"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:textColorHint="#7A7A7A"
-        android:textSize="16sp" />
-
-    <ImageButton
-        android:id="@+id/imgBtn_search"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_vertical"
-        android:backgroundTint="#000000"
-        android:padding="0dp"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        app:srcCompat="@android:drawable/ic_menu_search"
-        app:tint="#FFFFFF" />
-</LinearLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineMid1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="80dp" />
-
-    <TextView
-        android:id="@+id/txt_recommend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recommendation"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@id/guidelineMid1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineMid2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="112dp" />
-
-    <ScrollView
-        android:layout_width="350dp"
-        android:layout_height="500dp"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@id/guidelineMid2"
-        android:maxHeight="500dp"
-        android:maxWidth="350dp">
-
-        <LinearLayout
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/recycler_rcp">
+            android:id="@+id/recommend_fragment"
+            android:name="com.example.myapplication.RecommendFragment"/>
+    </FrameLayout>
 
-            </androidx.recyclerview.widget.RecyclerView>
-<!--            <com.example.myapplication.RecipeList-->
-<!--                android:id="@+id/rcplist"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content">-->
-<!--            </com.example.myapplication.RecipeList>-->
-        </LinearLayout>
-    </ScrollView>
-
-    <ImageButton
-        android:id="@+id/imgBtn_home"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@id/guidelineBottom"
-        app:srcCompat="@drawable/home" />
-    <ImageButton
-        android:id="@+id/imgBtn_user"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toTopOf="@id/guidelineBottom"
-        app:srcCompat="@drawable/user" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

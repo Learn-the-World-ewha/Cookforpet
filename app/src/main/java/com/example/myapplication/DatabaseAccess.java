@@ -41,9 +41,22 @@ public class DatabaseAccess {
 
     //now lets create a method to query and return the result from database
 
-    public ArrayList<String> getRecipeCode(String mat){
-        c = db.rawQuery("SELECT recipe_code" + " FROM materials" +
-                " WHERE mat_name='"+mat+"'order by recipe_code", new String[]{});
+    public ArrayList<String> getRecipeCode(String mat, int num){
+        String type;
+        if (num==1){
+            c = db.rawQuery("select recipe_code from materials where mat_name='"+mat+"' order by recipe_code", new String[]{});
+        } else if (num==2){
+            type = "멍키친";
+            c = db.rawQuery("select A.recipe_code from (select recipe_code from materials where mat_name='"+mat
+                            +"') as A inner join (select recipe_code from recipe where type='"+type+"') as B on A.recipe_code = B.recipe_code",
+                    new String[]{});
+        } else if (num==3){
+            type = "냥키친";
+            c = db.rawQuery("select A.recipe_code from (select recipe_code from materials where mat_name='"+mat
+                            +"') as A inner join (select recipe_code from recipe where type='"+type+"') as B on A.recipe_code = B.recipe_code",
+                    new String[]{});
+        }
+
         ArrayList<String> code_list = new ArrayList<String>();
         while(c.moveToNext()){
             Integer recipeCode = c.getInt(0);
@@ -52,12 +65,28 @@ public class DatabaseAccess {
         return code_list;
     }
 
-    public Integer getResultSum(String mat){
-        c = db.rawQuery("select recipe_code from materials where mat_name='"+mat+"'", new String[]{});
-        Integer count = c.getCount();
 
+
+    public Integer getResultSum(String mat, int num){
+        String type;
+        if (num==1){
+            c = db.rawQuery("select recipe_code from materials where mat_name='"+mat+"'", new String[]{});
+        } else if (num==2){
+            type = "멍키친";
+            c = db.rawQuery("select A.recipe_code from (select recipe_code from materials where mat_name='"+mat
+                    +"') as A inner join (select recipe_code from recipe where type='"+type+"') as B on A.recipe_code = B.recipe_code",
+                    new String[]{});
+        } else if (num==3){
+            type = "냥키친";
+            c = db.rawQuery("select A.recipe_code from (select recipe_code from materials where mat_name='"+mat
+                            +"') as A inner join (select recipe_code from recipe where type='"+type+"') as B on A.recipe_code = B.recipe_code",
+                    new String[]{});
+        }
+        Integer count = c.getCount();
         return count;
     }
+
+
 
     public ArrayList<ArrayList<String>> getMatlist(String code){
         ArrayList<ArrayList<String>> Mat_list = new ArrayList<ArrayList<String>>();
@@ -79,22 +108,6 @@ public class DatabaseAccess {
             likesum = c.getInt(0);
         }
         return likesum.toString();
-    }
-
-    public ArrayList<String> getRecipeInfo(String code){
-        ArrayList<String> Recipe_Info = new ArrayList<String>();
-        c = db.rawQuery("select recipe_sum, type, cook_time, tip, effect, like_sum"+
-                "from recipe where recipe_code = '"+code, new String[]{});
-        while(c.moveToNext()) {
-            Recipe_Info.add(c.getString(0));    //recipe_sum 저장
-            Recipe_Info.add(c.getString(1));    //type 저장
-            Recipe_Info.add(c.getString(2));    //cook_time 저장
-            Recipe_Info.add(c.getString(3));    //tip 저장
-            Recipe_Info.add(c.getString(4));    //effect 저장
-            Integer like = c.getInt(5);
-            Recipe_Info.add(like.toString());
-        }
-        return Recipe_Info;
     }
 
     public ArrayList<ArrayList<String>> getSteplist(String code){
@@ -145,5 +158,42 @@ public class DatabaseAccess {
             }
         }
         return Recipe_list;
+    }
+
+    public ArrayList<ArrayList<String>> getCodeDate(String id){
+        ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
+        c = db.rawQuery("select recipe_code, cook_date from cook where user_code='"+id+"' order by recipe_code", new String[]{});
+        while(c.moveToNext()){
+            ArrayList<String> tmp = new ArrayList<>();
+            tmp.add(c.getString(0));
+            tmp.add(c.getString(1));
+            list.add(tmp);
+        }
+        return list;
+    }
+    public Integer getRefResultSum(String id){
+        c = db.rawQuery("select recipe_code from cook where user_code='"+id+ "'", new String[]{});
+        Integer count = c.getCount();
+        return count;
+    }
+    public ArrayList<ArrayList<String>> getRefrigList(ArrayList<ArrayList<String>> lists){
+        ArrayList<ArrayList<String>> Refrig_list = new ArrayList<ArrayList<String>>();
+        String code;
+        for (int i=0; i<lists.size(); i++){
+            for (int j=0; j<lists.get(i).size(); j++){
+                ArrayList<String> one_rcp = new ArrayList<String>();
+                code = lists.get(i).get(0);
+                c = db.rawQuery("select img_main, recipe_name, type, tip from recipe where recipe_code='"
+                +code+"'", new String[]{});
+                while(c.moveToNext()){
+                    one_rcp.add(c.getString(0));
+                    one_rcp.add(c.getString(1));
+                    one_rcp.add(c.getString(2));
+                    one_rcp.add(c.getString(3));
+                }
+                Refrig_list.add(one_rcp);
+            }
+        }
+        return Refrig_list;
     }
 }
