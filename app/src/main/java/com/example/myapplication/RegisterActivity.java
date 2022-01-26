@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth; //파이어베이스 인증처리
     private DatabaseReference reference; //실시간 데이터베이스
-    boolean check = false; //중복 체크
+    boolean check=false; //중복 체크
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(RegisterActivity.this, "사용 가능한 아이디입니다", Toast.LENGTH_SHORT).show();
-                            check = false;
+                            check=false;
                         }
                     }
                     @Override
@@ -82,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
         mregisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name=mName.getText().toString();
                 String id=mEmailidText.getText().toString();
                 String pwd=mPasswordText.getText().toString();
                 String pwdcheck=mPasswordcheckText.getText().toString();
@@ -90,9 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
                 reffect=(RadioButton) findViewById(rg_effect.getCheckedRadioButtonId());
                 String effect=reffect.getText().toString();
 
-                if(check==true){
-                    Toast.makeText(RegisterActivity.this, "아이디를 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
-                }
 
                 if(pwd.equals(pwdcheck)) {
                     final ProgressDialog mDialog=new ProgressDialog(RegisterActivity.this);
@@ -107,6 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 FirebaseUser user=firebaseAuth.getCurrentUser();
                                 UserAccount account=new UserAccount();
+                                account.setName(name);
                                 account.setEmailid(user.getEmail());
                                 account.setPwd(pwd);
                                 account.setIdToken(user.getUid());

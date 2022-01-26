@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 public class UserAccount {
+    private String name;
     private String emailid;
     private String pwd;
     private String idToken;//고유 토큰 정보
@@ -9,7 +10,11 @@ public class UserAccount {
 
     public UserAccount(){}
 
-    public String getEmailid(String email) {
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
+    public String getEmailid() {
         return emailid;
     }
 
