@@ -48,11 +48,6 @@ public class UserActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private Button btn_ref;
-    private Button btn_likes;
-    private Button btn_logout;
-    private Button btn_delete;
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,46 +70,23 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int pos = tab.getPosition();
-                Log.d("UserActivity", "선택된 탭: "+pos);
+                Log.d("UserActivity", "선택된 탭: " + pos);
 
                 Fragment selected = null;
-                if (pos==0){
+                if (pos == 0) {
                     selected = rfragment;
-                } else if (pos==1){
+                } else if (pos == 1) {
                     selected = lfragment;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selected).commit();
-
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
-        btn_logout = findViewById(R.id.btn_logout);
-        btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
-            public void onClick(View v) {
-                firebaseAuth.signOut();
-
-                Intent intent = new Intent(UserActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-
-
-            }
-        });
-
-
-        btn_delete = findViewById(R.id.btn_delete);
-        btn_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserActivity.this, DeleteAccountActivity.class);
-                startActivity(intent);
             }
         });
     }
