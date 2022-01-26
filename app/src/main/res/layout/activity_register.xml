@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="351dp" />
+        app:layout_constraintGuide_begin="348dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineMid2"
@@ -152,6 +152,7 @@
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@id/editTxt_pwd" />
 
+
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="wrap_content"
@@ -162,11 +163,13 @@
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@+id/editTxt_name">
 
+
                 <TextView
                     android:id="@+id/txt_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="4dp"
                     android:text="Pet Type"
                     android:textColor="#000000"
                     android:textSize="24sp"
@@ -180,99 +183,110 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <RadioButton
-                    android:id="@+id/rBtn_dog"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="48dp"
-                    android:text="Dog"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@id/guidelineMid2"
-                    app:layout_constraintStart_toEndOf="@+id/txt_type"
-                    app:layout_constraintTop_toTopOf="@+id/guidelineMid1" />
 
                     <RadioButton
-                    android:id="@+id/rBtn_cat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="48dp"
-                    android:text="Cat"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@id/guidelineMid2"
-                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-                    app:layout_constraintTop_toTopOf="@+id/guidelineMid1" />
+                        android:id="@+id/rBtn_dog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="Dog"
+                        android:textSize="16dp" />
+
+                    <RadioButton
+                        android:id="@+id/rBtn_cat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Cat"
+                        android:textSize="16dp"/>
+
+
                 </RadioGroup>
+
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/txt_effect"
+            <LinearLayout
+                android:id="@+id/linearLayout3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="기대 효과"
-                android:textColor="#000000"
-                android:textSize="24sp"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toTopOf="@+id/guidelineMid2" />
-
-            <RadioGroup
-                android:id="@+id/rGroup_effect"
-                android:layout_width="275dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
+                app:layout_constraintTop_toBottomOf="@+id/editTxt_name">
+                <TextView
+                    android:id="@+id/txt_effect"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="기대 효과"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toTopOf="@+id/guidelineMid2" />
+
+
+                <RadioGroup
+                    android:id="@+id/rGroup_effect"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toRightOf="@+id/txt_effect">
 
                     <RadioButton
                         android:id="@+id/rBtn_effect1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:text="다이어트" />
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:text="다이어트"
+                        />
 
                     <RadioButton
                         android:id="@+id/rBtn_effect2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
                         android:text="모질개선" />
 
                     <RadioButton
                         android:id="@+id/rBtn_effect3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
                         android:text="구강개선" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
 
                     <RadioButton
                         android:id="@+id/rBtn_effect4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
                         android:text="신장관련" />
 
                     <RadioButton
                         android:id="@+id/rBtn_effect5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
                         android:text="관절관련" />
 
                     <RadioButton
                         android:id="@+id/rBtn_effect6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
                         android:text="장관련" />
-                </LinearLayout>
-            </RadioGroup>
+                </RadioGroup>
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_register"
@@ -285,6 +299,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/guidelineBottom"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart" />
+
+
 
 
         </LinearLayout>
