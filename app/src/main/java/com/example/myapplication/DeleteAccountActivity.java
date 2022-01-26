@@ -34,6 +34,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DeleteAccountActivity.this, UserActivity.class);
                 startActivity(intent);  // activity 이동
+
             }
         });
     }
