@@ -79,13 +79,12 @@
         <entry key="app/src/main/res/layout/step_list.xml" value="0.29322916666666665" />
         <entry key="app/src/main/res/layout/test.xml" value="0.28177083333333336" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.1" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/drawable/edge.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_register.xml" value="0.2717464598786244" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio java home" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

@@ -16,6 +16,8 @@ import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class UserActivity extends AppCompatActivity {
 
     RefrigFragment rfragment;
@@ -46,6 +48,11 @@ public class UserActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    private Button btn_ref;
+    private Button btn_likes;
+    private Button btn_logout;
+    private Button btn_delete;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,9 +92,29 @@ public class UserActivity extends AppCompatActivity {
 
             }
 
+        btn_logout = findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+
+                Intent intent = new Intent(UserActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+
+            }
+        });
+
+
+        btn_delete = findViewById(R.id.btn_delete);
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserActivity.this, DeleteAccountActivity.class);
+                startActivity(intent);
             }
         });
     }
