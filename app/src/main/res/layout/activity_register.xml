@@ -173,7 +173,14 @@
                     app:layout_constraintBottom_toBottomOf="@id/guidelineMid2"
                     app:layout_constraintStart_toStartOf="@id/guidelineStart"
                     app:layout_constraintTop_toTopOf="@+id/guidelineMid1" />
-                <RadioButton
+
+                <RadioGroup
+                    android:id="@+id/rGroup_pettype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
                     android:id="@+id/rBtn_dog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -184,7 +191,7 @@
                     app:layout_constraintStart_toEndOf="@+id/txt_type"
                     app:layout_constraintTop_toTopOf="@+id/guidelineMid1" />
 
-                <RadioButton
+                    <RadioButton
                     android:id="@+id/rBtn_cat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -194,6 +201,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/guidelineMid2"
                     app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                     app:layout_constraintTop_toTopOf="@+id/guidelineMid1" />
+                </RadioGroup>
             </LinearLayout>
 
             <TextView
