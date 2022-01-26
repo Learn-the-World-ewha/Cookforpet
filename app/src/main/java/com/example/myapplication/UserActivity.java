@@ -14,6 +14,7 @@ public class UserActivity extends AppCompatActivity {
     private Button btn_ref;
     private Button btn_likes;
     private Button btn_logout;
+    private Button btn_delete;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -50,6 +51,16 @@ public class UserActivity extends AppCompatActivity {
                 finish();
 
 
+            }
+        });
+
+
+        btn_delete = findViewById(R.id.btn_delete);
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserActivity.this, DeleteAccountActivity.class);
+                startActivity(intent);
             }
         });
     }
