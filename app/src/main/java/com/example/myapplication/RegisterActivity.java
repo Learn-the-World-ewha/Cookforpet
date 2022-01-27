@@ -23,7 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText mEmailText, mPasswordText, mPasswordcheckText, mName;
+    EditText mEmailText, mPasswordText, mPasswordcheckText, mNameText;
     Button mregisterBtn, mCheckBtn;
     RadioGroup rg_petType,rg_effect;
     RadioButton rpetType,reffect;
@@ -45,15 +45,11 @@ public class RegisterActivity extends AppCompatActivity {
         mEmailText=findViewById(R.id.editTxt_id);
         mPasswordText=findViewById(R.id.editTxt_pwd);
         mPasswordcheckText=findViewById(R.id.editTxt_pwd2);
-        mName=findViewById(R.id.editTxt_name);
+        mNameText=findViewById(R.id.editTxt_name);
         mregisterBtn=findViewById(R.id.btn_register);
         mCheckBtn=findViewById(R.id.btn_check);
         rg_petType=findViewById(R.id.rGroup_pettype);
         rg_effect=findViewById(R.id.rGroup_effect);
-
-
-
-
 
 
 
@@ -85,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
         mregisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name=mNameText.getText().toString();
                 String email=mEmailText.getText().toString();
                 String pwd=mPasswordText.getText().toString();
                 String pwdcheck=mPasswordcheckText.getText().toString();
@@ -95,12 +92,9 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-
-
-
-                if(check==true){
-                    Toast.makeText(RegisterActivity.this,"아이디를 다시 입력해주세요",Toast.LENGTH_LONG).show();
-                }
+//                if(check==true){
+//                    Toast.makeText(RegisterActivity.this,"아이디를 다시 입력해주세요",Toast.LENGTH_LONG).show();
+//                }
 
 
                 if(pwd.equals(pwdcheck)){
@@ -116,6 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 FirebaseUser user=firebaseAuth.getCurrentUser();
                                 UserAccount account=new UserAccount();
+                                account.setName(name);
                                 account.setEmailid(user.getEmail());
                                 account.setPwd(pwd);
                                 account.setIdToken((user.getUid()));
