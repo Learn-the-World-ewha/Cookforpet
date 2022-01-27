@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -57,6 +58,8 @@ public class SubMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_main);
 
+        final InputMethodManager manager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE) ;
+
         recommendFragment = (RecommendFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         resultFragment = new ResultFragment();
         dogResultFragment = new DogResultFragment();
@@ -88,6 +91,7 @@ public class SubMainActivity extends AppCompatActivity {
         imgBtn_search.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 onFragmentChanged(1);
             }
         });

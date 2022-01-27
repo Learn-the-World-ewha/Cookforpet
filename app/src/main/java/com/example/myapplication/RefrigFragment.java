@@ -39,9 +39,9 @@ public class RefrigFragment extends Fragment {
     Integer count;
     String id;
 
-    private FirebaseAuth firebaseAuth; //파이어베이스 인증처리
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance(); //파이어베이스 인증처리
     private DatabaseReference reference;
-    //FirebaseUser user=firebaseAuth.getCurrentUser();
+    FirebaseUser user=firebaseAuth.getCurrentUser();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,12 +52,12 @@ public class RefrigFragment extends Fragment {
         activity = (UserActivity) getActivity();
 
 
-        /* user_code id변수에 받아와야 함  */
-//        //유저 이름 띄우기
-//        username_txt=rootView.findViewById(R.id.name_txt);
-//        firebaseAuth= FirebaseAuth.getInstance();
+        //유저 이름 띄우기
+        username_txt=rootView.findViewById(R.id.name_txt);
+        username_txt.setText(activity.user_name);
+
 //        reference= FirebaseDatabase.getInstance().getReference("Cookforpet");
-//        DatabaseReference emailid = reference.child(user.getUid()).child("emailid");
+//        DatabaseReference emailid = reference.child(user.getUid()).child("name");
 //
 //        emailid.addValueEventListener(new ValueEventListener() {
 //            @Override

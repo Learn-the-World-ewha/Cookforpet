@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-//아이디 중복 체크
+        //아이디 중복 체크
         mCheckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

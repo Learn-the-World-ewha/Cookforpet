@@ -10,16 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class DeleteFragment extends Fragment {
     ViewGroup rootView;
     UserActivity activity;
     Context context;
+    TextView username_txt;
 
     private Button btn_yes;
-    private Button btn_no;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -30,19 +32,19 @@ public class DeleteFragment extends Fragment {
 
         activity = (UserActivity) getActivity();
 
+        //유저 이름 띄우기
+        username_txt=rootView.findViewById(R.id.name_txt);
+        username_txt.setText(activity.user_name);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
         btn_yes = rootView.findViewById(R.id.btn_yes);
         btn_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.getCurrentUser().delete();
-            }
-        });
-
-        btn_no = rootView.findViewById(R.id.btn_no);
-        btn_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, UserActivity.class);
+                user.delete();
+                Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);  // activity 이동
             }
         });

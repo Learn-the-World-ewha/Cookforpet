@@ -35,6 +35,10 @@ public class LikesFragment extends Fragment {
 
         activity = (UserActivity) getActivity();
 
+        //유저 이름 띄우기
+        username_txt=rootView.findViewById(R.id.name_txt);
+        username_txt.setText(activity.user_name);
+
         //결과값 갯수 출력
         count = activity.dbAc.getUserLikeSum(id);
         cook_sum = rootView.findViewById(R.id.like_sum);

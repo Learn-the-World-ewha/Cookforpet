@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        final InputMethodManager manager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE) ;
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         mLoginBtn = findViewById(R.id.btn_login);
@@ -38,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String emailid = mEmailidText.getText().toString();
                 String pwd = mPasswordText.getText().toString();
+
+                manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
                 firebaseAuth.signInWithEmailAndPassword(emailid, pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
