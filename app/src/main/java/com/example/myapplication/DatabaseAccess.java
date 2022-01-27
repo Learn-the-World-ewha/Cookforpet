@@ -197,4 +197,20 @@ public class DatabaseAccess {
         return Refrig_list;
     }
 
+    public Integer getUserLikeSum(String id){
+        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like=1", new String[]{});
+        Integer count = c.getCount();
+        return count;
+    }
+
+    public ArrayList<String> getUserLikeRecipe(String id){
+        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like=1", new String[]{});
+
+        ArrayList<String> code_list = new ArrayList<String>();
+        while(c.moveToNext()){
+            Integer recipeCode = c.getInt(0);
+            code_list.add(recipeCode.toString());
+        }
+        return code_list;
+    }
 }

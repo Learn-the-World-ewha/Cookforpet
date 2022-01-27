@@ -22,12 +22,15 @@ public class UserActivity extends AppCompatActivity {
 
     RefrigFragment rfragment;
     LikesFragment lfragment;
+    DeleteFragment dfragment;
 
     Intent intent;
     DatabaseAccess dbAc;
+    private FirebaseAuth firebaseAuth;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actionbar,menu);
+        getMenuInflater().inflate(R.menu.menu_userbar,menu);
         return true;
     }
 
@@ -39,9 +42,11 @@ public class UserActivity extends AppCompatActivity {
                 intent = new Intent(UserActivity.this, SubMainActivity.class);
                 startActivity(intent);  // activity 이동
                 break;
-            case R.id.menu_user:
-                intent = new Intent(UserActivity.this, UserActivity.class);
-                startActivity(intent);  // activity 이동
+            case R.id.menu_logout:
+                //firebaseAuth.signOut();
+                intent = new Intent(UserActivity.this, MainActivity.class);
+                startActivity(intent);
+                //finish();
                 break;
             default:
                 break;
@@ -56,6 +61,7 @@ public class UserActivity extends AppCompatActivity {
 
         rfragment = new RefrigFragment();
         lfragment = new LikesFragment();
+        dfragment = new DeleteFragment();
 
         dbAc = DatabaseAccess.getInstance(getApplicationContext());
         dbAc.open();
@@ -65,6 +71,7 @@ public class UserActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.addTab(tabs.newTab().setText("My Refrigerator"));
         tabs.addTab(tabs.newTab().setText("Likes"));
+        tabs.addTab(tabs.newTab().setText("Delete Account"));
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -77,6 +84,8 @@ public class UserActivity extends AppCompatActivity {
                     selected = rfragment;
                 } else if (pos == 1) {
                     selected = lfragment;
+                } else if (pos == 2){
+                    selected = dfragment;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selected).commit();
             }

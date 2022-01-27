@@ -13,7 +13,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_cat_search_result2.xml" value="0.1453804347826087" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_cats_main.xml" value="0.128125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_cats_recipe.xml" value="0.22" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_delete_account.xml" value="0.1078125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_delete_account.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dog_search_result.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_main.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_main2.xml" value="0.1" />
@@ -37,8 +37,9 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_user.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/content_navi_test.xml" value="0.1453804347826087" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_cat_result.xml" value="0.1381340579710145" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_delete.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_dog_result.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_likes.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_likes.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_recommend.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_ref_detail.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_refrig.xml" value="0.16666666666666666" />
@@ -53,8 +54,10 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/step_list.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/test.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/activity_main_drawer.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu_actionbar.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu_bottom.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu_test.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/menu_userbar.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/menu/navi_test.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.29791666666666666" />
         <entry key="app/src/main/res/drawable/baseline_favorite_24.xml" value="0.29791666666666666" />
@@ -85,7 +88,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio java home" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
