@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -39,10 +40,6 @@ public class RefrigFragment extends Fragment {
     Integer count;
     String id;
 
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance(); //파이어베이스 인증처리
-    private DatabaseReference reference;
-    FirebaseUser user=firebaseAuth.getCurrentUser();
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,26 +47,9 @@ public class RefrigFragment extends Fragment {
         context = container.getContext();
 
         activity = (UserActivity) getActivity();
-
-
         //유저 이름 띄우기
         username_txt=rootView.findViewById(R.id.name_txt);
         username_txt.setText(activity.user_name);
-
-//        reference= FirebaseDatabase.getInstance().getReference("Cookforpet");
-//        DatabaseReference emailid = reference.child(user.getUid()).child("name");
-//
-//        emailid.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                String username = snapshot.getValue(String.class);
-//                emailid.setValue(username);
-//                username_txt.setText(emailid.toString());
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
 
 
         //결과값 갯수 출력
