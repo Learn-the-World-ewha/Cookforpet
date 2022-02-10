@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,10 +39,8 @@ public class UserActivity extends AppCompatActivity {
     Intent intent;
     DatabaseAccess dbAc;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-
+    final FirebaseUser user = firebaseAuth.getCurrentUser();
     private DatabaseReference reference;
-    FirebaseUser user=firebaseAuth.getCurrentUser();
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,6 +70,8 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+
+
         rfragment = new RefrigFragment();
         lfragment = new LikesFragment();
         dfragment = new DeleteFragment();
@@ -77,7 +79,31 @@ public class UserActivity extends AppCompatActivity {
         dbAc = DatabaseAccess.getInstance(getApplicationContext());
         dbAc.open();
 
+        reference= FirebaseDatabase.getInstance().getReference("Cookforpet");
+        DatabaseReference username = reference.child("UserAccount").child(user.getUid()).child("name");
+
+        username.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful())
+                    Log.e("firebase", "Error getting data", task.getException());
+                else
+                    user_name = task.getResult().getValue(String.class);
+            }
+        });
+
+//      username.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                user_name = snapshot.getValue(String.class);
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, rfragment).commit();
+
+
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.addTab(tabs.newTab().setText("My Refrigerator"));
@@ -107,21 +133,6 @@ public class UserActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
-
-        reference= FirebaseDatabase.getInstance().getReference("Cookforpet");
-        DatabaseReference username = reference.child(user.getUid()).child("name");
-
-        username.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name = snapshot.getValue(String.class);
-                username.setValue(name);
-                user_name = username.toString();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
