@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.content.Intent;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +39,7 @@ public class RefrigFragment extends Fragment {
     Context context;
     Integer count;
     String id;
+    Intent intent;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance(); //파이어베이스 인증처리
     private DatabaseReference reference;
@@ -70,6 +72,15 @@ public class RefrigFragment extends Fragment {
 //            public void onCancelled(@NonNull DatabaseError error) {
 //            }
 //        });
+
+        String recipe_code;
+
+        Bundle bundle=getArguments();
+        if(getArguments()!=null){
+            recipe_code=getArguments().getString("recipe_cdoe");
+        }
+
+
 
 
         //결과값 갯수 출력

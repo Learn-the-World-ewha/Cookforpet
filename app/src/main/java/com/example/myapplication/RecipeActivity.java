@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,13 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -31,6 +39,9 @@ public class RecipeActivity extends AppCompatActivity {
     MaterialItemAdapter adapter;
     StepItemAdapter adapter2;
     Intent intent;
+   // int recipe_code_num;
+    private FirebaseAuth firebaseAuth; //파이어베이스 인증처리
+    private DatabaseReference reference; //실시간 데이터베이스
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,6 +96,8 @@ public class RecipeActivity extends AppCompatActivity {
         txt_like = findViewById(R.id.txt_like);
         img_main = findViewById(R.id.img_main);
 
+        btn_complete=findViewById(R.id.btn_complete);
+
         //xml에 적용
         txt_title.setText(recipe_name);   //recipe_name 출력
         Glide.with(this)                 //img_main 출력
@@ -129,12 +142,39 @@ public class RecipeActivity extends AppCompatActivity {
         }
         recycler_step.setAdapter(adapter2);
 
-
-
         databaseAccess.close();
+
+        //레시피저장
+        btn_complete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RefrigFragment fragment=new RefrigFragment();
+                Bundle bundle=new Bundle();
+                bundle.putString("recipe_code",recipe_code);
+                fragment.setArguments(bundle);
+
+                Toast.makeText(RecipeActivity.this, recipe_code, Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
     }
-    public void onButton1Clicked(View v) {
-        Toast.makeText(this, "My refrigerator에 추가되었습니다.", Toast.LENGTH_LONG).show();
-    }
+  //  public void onButton1Clicked(View v) {
+
+    //    Intent intent = getIntent();
+   //     recipe_code=intent.getStringExtra("recipe_code");
+     //   recipe_code_num=Integer.parseInt(recipe_code);
+
+     //   firebaseAuth= FirebaseAuth.getInstance();
+     //   reference= FirebaseDatabase.getInstance().getReference("Cookforpet");
+      //  FirebaseUser user=firebaseAuth.getCurrentUser();
+     //   reference.child("UserAccount").child(user.getUid()).child("like").setValue(recipe_code_num);
+
+
+
+
+     //   Toast.makeText(this, recipe_code_num, Toast.LENGTH_LONG).show();
+ //   }
 
 }
