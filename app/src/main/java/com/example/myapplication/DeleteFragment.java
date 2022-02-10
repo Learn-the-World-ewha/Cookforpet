@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -34,6 +36,7 @@ public class DeleteFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference reference;
     private FirebaseDatabase database;
+    private FirebaseUser user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,7 +51,7 @@ public class DeleteFragment extends Fragment {
         username_txt.setText(activity.user_name);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        user = firebaseAuth.getCurrentUser();
 
 
         reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
@@ -56,17 +59,34 @@ public class DeleteFragment extends Fragment {
         btn_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                reference.child("UserAccount").child(user.getUid()).removeValue();
-
-                user.delete();
-
-                Intent intent = new Intent(context, MainActivity.class);
-
-                startActivity(intent);  // activity 이동
+                showDeleteMessage();
             }
         });
 
         return rootView;
+    }
+    private void showDeleteMessage(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("계정을 삭제 하시겠습니까?");
+        builder.setIcon(android.R.drawable.ic_dialog_info);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(user!=null){
+                    reference.child("UserAccount").child(user.getUid()).removeValue();
+                    user.delete();
+                    Intent intent = new Intent(context, MainActivity.class);
+                    startActivity(intent);  // activity 이동
+                }
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

@@ -79,6 +79,7 @@
                 android:id="@+id/txt_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginVertical="5dp"
                 android:text="summary"
@@ -89,20 +90,21 @@
                 android:id="@+id/txt_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginVertical="5dp"
                 android:text="3일 냉장보관 가능"
                 android:textColor="@color/purple_700"
                 android:textSize="14sp"/>
             <LinearLayout
-                android:layout_width="350dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp">
+                android:layout_marginVertical="5dp"
+                android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:text="소요시간:"
+                    android:text="소요시간: "
                     android:textColor="#7a7a7a"
                     android:textSize="14sp"/>
                 <TextView
@@ -116,8 +118,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:text="기대효과:"
+                    android:text=" 기대효과: "
                     android:textColor="#7a7a7a"
                     android:textSize="14sp"/>
                 <TextView
@@ -143,6 +144,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="조리 순서"
                 android:textColor="@color/black"
                 android:textSize="20sp"

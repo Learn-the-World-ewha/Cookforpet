@@ -135,6 +135,9 @@ public class RecipeActivity extends AppCompatActivity {
     }
     public void onButton1Clicked(View v) {
         Toast.makeText(this, "My refrigerator에 추가되었습니다.", Toast.LENGTH_LONG).show();
+
+
+
     }
 
 }
