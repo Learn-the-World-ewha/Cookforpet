@@ -57,7 +57,7 @@ public class UserActivity extends AppCompatActivity {
                 startActivity(intent);  // activity 이동
                 break;
             case R.id.menu_logout:
-                showMessage();
+                showLogoutMessage();
                 break;
             default:
                 break;
@@ -137,7 +137,7 @@ public class UserActivity extends AppCompatActivity {
         });
 
     }
-    private void showMessage(){
+    private void showLogoutMessage(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("로그아웃 하시겠습니까?");
         builder.setIcon(android.R.drawable.ic_dialog_info);
@@ -161,4 +161,5 @@ public class UserActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 }
