@@ -37,7 +37,7 @@ public class RefrigFragment extends Fragment {
     ViewGroup rootView;
     UserActivity activity;
     Context context;
-    Integer count;
+    Integer count=0;
     String id;
 
     @Override
@@ -52,8 +52,15 @@ public class RefrigFragment extends Fragment {
         username_txt.setText(activity.user_name);
 
 
+        if(getArguments()!=null){
+            id=getArguments().getString("recipe_code");
+            count++;
+        }
+
+
+
         //결과값 갯수 출력
-        count = activity.dbAc.getRefResultSum(id);
+        //count = activity.dbAc.getRefResultSum(id);
         cook_sum = rootView.findViewById(R.id.cook_sum);
         cook_sum.setText(count.toString());
 

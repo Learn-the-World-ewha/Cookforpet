@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -151,7 +154,10 @@ public class RecipeActivity extends AppCompatActivity {
                 RefrigFragment fragment=new RefrigFragment();
                 Bundle bundle=new Bundle();
                 bundle.putString("recipe_code",recipe_code);
+                FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
                 fragment.setArguments(bundle);
+                transaction.replace(R.id.fragment_container,fragment);
+                transaction.commit();
 
                 Toast.makeText(RecipeActivity.this, recipe_code, Toast.LENGTH_LONG).show();
 
