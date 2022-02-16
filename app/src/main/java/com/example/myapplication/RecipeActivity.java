@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +17,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -31,6 +40,13 @@ public class RecipeActivity extends AppCompatActivity {
     MaterialItemAdapter adapter;
     StepItemAdapter adapter2;
     Intent intent;
+    String user_name;
+
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    final FirebaseUser user = firebaseAuth.getCurrentUser();
+    private DatabaseReference reference;
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,9 +78,9 @@ public class RecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dogs_recipe);
 
         Intent intent = getIntent();
-        recipe_code=intent.getStringExtra("recipe_code");
-        recipe_name=intent.getStringExtra("recipe_name");
-        img_url=intent.getStringExtra("img_url");
+        recipe_code = intent.getStringExtra("recipe_code");
+        recipe_name = intent.getStringExtra("recipe_name");
+        img_url = intent.getStringExtra("img_url");
         recipe_eff = intent.getStringExtra("recipe_eff");
         recipe_like = intent.getStringExtra("recipe_like");
         recipe_time = intent.getStringExtra("recipe_time");
@@ -72,8 +88,6 @@ public class RecipeActivity extends AppCompatActivity {
         recipe_tip = intent.getStringExtra("recipe_tip");
         recipe_type = intent.getStringExtra("recipe_type");
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-        databaseAccess.open();
 
         //레시피 관련 정보 출력
         txt_title = findViewById(R.id.txt_title);
@@ -101,6 +115,9 @@ public class RecipeActivity extends AppCompatActivity {
         txt_eff.setText(recipe_eff);     //effect 출력
         txt_like.setText(recipe_like);  //like 출력
 
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+        databaseAccess.open();
+
 
         //재료 리스트 출력
         recycler_mat = findViewById(R.id.recycler_mat);
@@ -110,7 +127,7 @@ public class RecipeActivity extends AppCompatActivity {
         adapter = new MaterialItemAdapter();
 
         ArrayList<ArrayList<String>> Matlist = databaseAccess.getMatlist(recipe_code);
-        for(int i=0; i<Matlist.size(); i++){
+        for (int i = 0; i < Matlist.size(); i++) {
             adapter.addItem(new MaterialItem(Matlist.get(i).get(0), Matlist.get(i).get(1)));
         }
         recycler_mat.setAdapter(adapter);
@@ -124,20 +141,41 @@ public class RecipeActivity extends AppCompatActivity {
         adapter2 = new StepItemAdapter();
 
         ArrayList<ArrayList<String>> Steplist = databaseAccess.getSteplist(recipe_code);
-        for(int i=0; i<Steplist.size(); i++){
+        for (int i = 0; i < Steplist.size(); i++) {
             adapter2.addItem(new StepItem(Steplist.get(i).get(0), Steplist.get(i).get(1), Steplist.get(i).get(2)));
         }
         recycler_step.setAdapter(adapter2);
 
 
+  //      btn_complete=findViewById(R.id.btn_complete);
+  //      btn_complete.setOnClickListener(new View.OnClickListener() {
+   //         @Override
+    //        public void onClick(View v) {
+    //            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+     //           databaseAccess.open();
+    //            user_name="na";
+       //         databaseAccess.saveCooked(user_name, recipe_code);
+      //          Toast.makeText(getApplicationContext(), "완료",Toast.LENGTH_LONG).show();
+      //      }
+      //  });
+
 
         databaseAccess.close();
     }
-    public void onButton1Clicked(View v) {
+
+    public void onButton1Clicked (View v){
+
+       //     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+         //   databaseAccess.open();
+           // databaseAccess.saveCooked(user_name, recipe_code);
+
+            //Toast.makeText(this, user_name, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "My refrigerator에 추가되었습니다.", Toast.LENGTH_LONG).show();
 
+            //databaseAccess.close();
 
 
     }
+
 
 }

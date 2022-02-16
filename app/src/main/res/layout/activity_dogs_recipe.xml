@@ -161,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"
                 android:layout_gravity="center"
+                android:onClick="onButton1Clicked"
                 android:text="조리 완료"
                 />
         </LinearLayout>

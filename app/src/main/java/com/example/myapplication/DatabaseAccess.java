@@ -4,8 +4,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
@@ -212,6 +215,13 @@ public class DatabaseAccess {
             code_list.add(recipeCode.toString());
         }
         return code_list;
+    }
+
+    public void saveCooked(String user_name, String recipe_code){
+        long Now=System.currentTimeMillis();
+        Date date=new Date(Now);
+        //SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        db.execSQL("insert into cook VALUES ('"+user_name+"','"+recipe_code+"','"+date+"');");
     }
 
 }
