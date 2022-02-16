@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,12 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
+    private SQLiteDatabase db2;
     private static DatabaseAccess instance;
     Cursor c = null;
     Cursor c2 = null;
@@ -217,11 +217,19 @@ public class DatabaseAccess {
         return code_list;
     }
 
-    public void saveCooked(String user_name, String recipe_code){
-        long Now=System.currentTimeMillis();
-        Date date=new Date(Now);
-        //SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-        db.execSQL("insert into cook VALUES ('"+user_name+"','"+recipe_code+"','"+date+"');");
+    public void insertCook(ContentValues cv){
+       db.insert("cook",null,cv);
     }
-
+    public void insertVisit(String user_code, String recipe_code){
+        ContentValues cv = new ContentValues();
+        c = db.rawQuery("select like from visit where user_code='"+user_code+"'and recipe_code='"+recipe_code+
+                "'",new String[]{});
+        if (c.getCount()>0);
+        else {  //방문한 적 없으면 insert
+            cv.put("user_code",user_code);
+            cv.put("recipe_code",recipe_code);
+            cv.put("like",0);
+            db.insert("visit", null, cv);
+        }
+    }
 }
