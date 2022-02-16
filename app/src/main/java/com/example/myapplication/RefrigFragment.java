@@ -47,11 +47,12 @@ public class RefrigFragment extends Fragment {
         context = container.getContext();
 
         activity = (UserActivity) getActivity();
+
         //유저 이름 띄우기
         username_txt=rootView.findViewById(R.id.name_txt);
         username_txt.setText(activity.user_name);
 
-
+        id = activity.user_code;
         //결과값 갯수 출력
         count = activity.dbAc.getRefResultSum(id);
         cook_sum = rootView.findViewById(R.id.cook_sum);
@@ -68,43 +69,43 @@ public class RefrigFragment extends Fragment {
         ArrayList<ArrayList<String>> Refriglist = activity.dbAc.getRefrigList(code_date);
         for(int i=0; i<Refriglist.size(); i++){
             for (int j=0; j<code_date.size(); j++){
-                String tmp_date = code_date.get(i).get(0);
-                adapter.addItem(new RefrigItem(Refriglist.get(i).get(0), Refriglist.get(i).get(1), Refriglist.get(i).get(2),
-                        Refriglist.get(i).get(3), tmp_date));
+                String tmp_date = code_date.get(j).get(1);
+                adapter.addItem(new RefrigItem(Refriglist.get(j).get(0), Refriglist.get(j).get(1), Refriglist.get(j).get(2),
+                        Refriglist.get(j).get(3), tmp_date));
             }
         }
         recycler_rcp.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new OnRefrigItemClickListener() {
-            @Override
-            public void onItemClick(RefrigItemAdapter.ViewHolder holder, View view, int position) {
-                RefrigItem item = adapter.getItem(position);
-//                Intent intent = new Intent(context, RecipeActivity.class);
-//                intent.putExtra("recipe_code", recipe_code.get(position));
-//                intent.putExtra("recipe_name",item.rcp_txt);
-//                intent.putExtra("img_url",item.img_url);
-//                intent.putExtra("recipe_sum", item.txt_sum);
-//                intent.putExtra("recipe_type", item.txt_type);
-//                intent.putExtra("recipe_time", item.txt_time);
-//                intent.putExtra("recipe_tip",item.txt_tip);
-//                intent.putExtra("recipe_eff",item.txt_eff);
-//                intent.putExtra("recipe_like",item.txt_like);
-//                startActivity(intent);  // activity 이동
-                Bundle bundle = new Bundle();
-                bundle.putString("img_url",item.img_url);
-                bundle.putString("recipe_name",item.rcp_txt);
-                bundle.putString("recipe_type",item.type_txt);
-                bundle.putString("recipe_tip",item.tip_txt);
-                bundle.putString("recipe_cookdate",item.date_txt);
-
-                FragmentManager fm = activity.getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                RefDetailFragment rd = new RefDetailFragment();
-                rd.setArguments(bundle);
-                ft.replace(R.id.fragment_container, rd).commit();
-
-            }
-        });
+//
+//        adapter.setOnItemClickListener(new OnRefrigItemClickListener() {
+//            @Override
+//            public void onItemClick(RefrigItemAdapter.ViewHolder holder, View view, int position) {
+//                RefrigItem item = adapter.getItem(position);
+////                Intent intent = new Intent(context, RecipeActivity.class);
+////                intent.putExtra("recipe_code", recipe_code.get(position));
+////                intent.putExtra("recipe_name",item.rcp_txt);
+////                intent.putExtra("img_url",item.img_url);
+////                intent.putExtra("recipe_sum", item.txt_sum);
+////                intent.putExtra("recipe_type", item.txt_type);
+////                intent.putExtra("recipe_time", item.txt_time);
+////                intent.putExtra("recipe_tip",item.txt_tip);
+////                intent.putExtra("recipe_eff",item.txt_eff);
+////                intent.putExtra("recipe_like",item.txt_like);
+////                startActivity(intent);  // activity 이동
+//                Bundle bundle = new Bundle();
+//                bundle.putString("img_url",item.img_url);
+//                bundle.putString("recipe_name",item.rcp_txt);
+//                bundle.putString("recipe_type",item.type_txt);
+//                bundle.putString("recipe_tip",item.tip_txt);
+//                bundle.putString("recipe_cookdate",item.date_txt);
+//
+//                FragmentManager fm = activity.getSupportFragmentManager();
+//                FragmentTransaction ft = fm.beginTransaction();
+//                RefDetailFragment rd = new RefDetailFragment();
+//                rd.setArguments(bundle);
+//                ft.replace(R.id.fragment_container, rd).commit();
+//
+//            }
+//        });
 
         return rootView;
     }

@@ -95,6 +95,18 @@ public class RecipeActivity extends AppCompatActivity {
         databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
         databaseAccess.open();
 
+        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
+        DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
+        usercode.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful())
+                    Log.e("firebase", "Error getting data", task.getException());
+                else
+                    user_code = String.valueOf(task.getResult().getValue());
+            }
+        });
+
         //레시피 관련 정보 출력
         txt_title = findViewById(R.id.txt_title);
         txt_type = findViewById(R.id.txt_type);
@@ -149,17 +161,7 @@ public class RecipeActivity extends AppCompatActivity {
         }
         recycler_step.setAdapter(adapter2);
 
-        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
-        DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
-        usercode.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful())
-                    Log.e("firebase", "Error getting data", task.getException());
-                else
-                    user_code = task.getResult().getValue(String.class);
-            }
-        });
+
 
         tog_like = findViewById(R.id.tog_like);
         tog_like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -175,12 +177,12 @@ public class RecipeActivity extends AppCompatActivity {
 
 
         //방문 기록
-        databaseAccess.insertVisit(user_code, recipe_code);
+        //databaseAccess.insertVisit(user_code, recipe_code);
         //databaseAccess.close();
     }
 
     public void onButton1Clicked(View v) {
-        Toast.makeText(this, "My refrigerator에 추가되었습니다.", Toast.LENGTH_LONG).show();
+
         mNow = System.currentTimeMillis();
         mDate = new Date(mNow);
         cook_date = mFormat.format(mDate);
@@ -190,5 +192,6 @@ public class RecipeActivity extends AppCompatActivity {
         cv.put("recipe_code", recipe_code);
         cv.put("cook_date", cook_date);
         databaseAccess.insertCook(cv);
+        Toast.makeText(this, "My refrigerator에 추가되었습니다.", Toast.LENGTH_LONG).show();
     }
 }
