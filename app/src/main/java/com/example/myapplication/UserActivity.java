@@ -35,7 +35,7 @@ public class UserActivity extends AppCompatActivity {
     LikesFragment lfragment;
     DeleteFragment dfragment;
 
-    String user_name;
+    String user_name, user_code;
     Intent intent;
     DatabaseAccess dbAc;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -70,8 +70,6 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-
-
         rfragment = new RefrigFragment();
         lfragment = new LikesFragment();
         dfragment = new DeleteFragment();
@@ -80,27 +78,28 @@ public class UserActivity extends AppCompatActivity {
         dbAc.open();
 
         reference= FirebaseDatabase.getInstance().getReference("Cookforpet");
-        DatabaseReference username = reference.child("UserAccount").child(user.getUid()).child("name");
+        DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
+        usercode.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful())
+                    Log.e("firebase", "Error getting data", task.getException());
+                else
+                    user_code = String.valueOf(task.getResult().getValue());
+            }
+        });
 
+
+        DatabaseReference username = reference.child("UserAccount").child(user.getUid()).child("name");
         username.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful())
                     Log.e("firebase", "Error getting data", task.getException());
                 else
-                    user_name = task.getResult().getValue(String.class);
+                    user_name = String.valueOf(task.getResult().getValue());
             }
         });
-
-//      username.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                user_name = snapshot.getValue(String.class);
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, rfragment).commit();
 
 
@@ -141,7 +140,6 @@ public class UserActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("로그아웃 하시겠습니까?");
         builder.setIcon(android.R.drawable.ic_dialog_info);
-
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override

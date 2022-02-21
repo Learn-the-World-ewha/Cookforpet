@@ -46,7 +46,8 @@ public class RecipeActivity extends AppCompatActivity {
     DatabaseAccess databaseAccess;
     Date mDate;
     long mNow;
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-mm-dd");
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+    int flag=0;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     final FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -94,6 +95,21 @@ public class RecipeActivity extends AppCompatActivity {
 
         databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
         databaseAccess.open();
+        //방문 기록
+        databaseAccess.insertVisit(user_code, recipe_code);
+
+
+        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
+        DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
+        usercode.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful())
+                    Log.e("firebase", "Error getting data", task.getException());
+                else
+                    user_code = String.valueOf(task.getResult().getValue());
+            }
+        });
 
         //레시피 관련 정보 출력
         txt_title = findViewById(R.id.txt_title);
@@ -149,38 +165,35 @@ public class RecipeActivity extends AppCompatActivity {
         }
         recycler_step.setAdapter(adapter2);
 
-        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
-        DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
-        usercode.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful())
-                    Log.e("firebase", "Error getting data", task.getException());
-                else
-                    user_code = task.getResult().getValue(String.class);
-            }
-        });
+
 
         tog_like = findViewById(R.id.tog_like);
         tog_like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-
+                    flag=1;
+                    Integer tmp = Integer.parseInt(recipe_like)+ 1;
+                    recipe_like = tmp.toString();
+                    txt_like.setText(recipe_like);  //like 출력
+                    databaseAccess.UpdateLike(user_code,recipe_code,recipe_like);
                 } else {
-
+                    if (flag==1){
+                        flag=0;
+                        Integer tmp = Integer.parseInt(recipe_like)- 1;
+                        recipe_like = tmp.toString();
+                        txt_like.setText(recipe_like);  //like 출력
+                        databaseAccess.UpdateLike(user_code,recipe_code,recipe_like);
+                    }
                 }
             }
         });
 
-
-        //방문 기록
-        databaseAccess.insertVisit(user_code, recipe_code);
         //databaseAccess.close();
     }
 
     public void onButton1Clicked(View v) {
-        Toast.makeText(this, "My refrigerator에 추가되었습니다.", Toast.LENGTH_LONG).show();
+
         mNow = System.currentTimeMillis();
         mDate = new Date(mNow);
         cook_date = mFormat.format(mDate);
@@ -190,5 +203,6 @@ public class RecipeActivity extends AppCompatActivity {
         cv.put("recipe_code", recipe_code);
         cv.put("cook_date", cook_date);
         databaseAccess.insertCook(cv);
+        Toast.makeText(this, "My refrigerator에 추가되었습니다.", Toast.LENGTH_LONG).show();
     }
 }

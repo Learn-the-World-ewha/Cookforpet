@@ -68,8 +68,6 @@ public class DatabaseAccess {
         return code_list;
     }
 
-
-
     public Integer getResultSum(String mat, int num){
         String type;
         if (num==1){
@@ -88,8 +86,6 @@ public class DatabaseAccess {
         Integer count = c.getCount();
         return count;
     }
-
-
 
     public ArrayList<ArrayList<String>> getMatlist(String code){
         ArrayList<ArrayList<String>> Mat_list = new ArrayList<ArrayList<String>>();
@@ -111,6 +107,12 @@ public class DatabaseAccess {
             likesum = c.getInt(0);
         }
         return likesum.toString();
+    }
+
+    public void UpdateLike(String user_code, String rcp_code, String rcp_like){
+        ContentValues cv = new ContentValues();
+        cv.put("like_sum",rcp_like);
+        db.update("recipe",cv, "recipe_code = ? ",new String[]{rcp_code});
     }
 
     public ArrayList<ArrayList<String>> getSteplist(String code){
@@ -174,16 +176,17 @@ public class DatabaseAccess {
         }
         return list;
     }
+
     public Integer getRefResultSum(String id){
         c = db.rawQuery("select recipe_code from cook where user_code='"+id+ "'", new String[]{});
         Integer count = c.getCount();
         return count;
     }
+
     public ArrayList<ArrayList<String>> getRefrigList(ArrayList<ArrayList<String>> lists){
         ArrayList<ArrayList<String>> Refrig_list = new ArrayList<ArrayList<String>>();
         String code;
         for (int i=0; i<lists.size(); i++){
-            for (int j=0; j<lists.get(i).size(); j++){
                 ArrayList<String> one_rcp = new ArrayList<String>();
                 code = lists.get(i).get(0);
                 c = db.rawQuery("select img_main, recipe_name, type, tip from recipe where recipe_code='"
@@ -195,7 +198,6 @@ public class DatabaseAccess {
                     one_rcp.add(c.getString(3));
                 }
                 Refrig_list.add(one_rcp);
-            }
         }
         return Refrig_list;
     }
@@ -222,14 +224,14 @@ public class DatabaseAccess {
     }
     public void insertVisit(String user_code, String recipe_code){
         ContentValues cv = new ContentValues();
-        c = db.rawQuery("select like from visit where user_code='"+user_code+"'and recipe_code='"+recipe_code+
+        c = db.rawQuery("select user_code from visit where user_code='"+user_code+"'and recipe_code='"+recipe_code+
                 "'",new String[]{});
-        if (c.getCount()>0);
-        else {  //방문한 적 없으면 insert
+        if (c.getCount()==0){ //방문한 적 없으면 insert
             cv.put("user_code",user_code);
             cv.put("recipe_code",recipe_code);
             cv.put("like",0);
             db.insert("visit", null, cv);
+        } else {
         }
     }
 }

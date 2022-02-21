@@ -14,15 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication" >
         <activity
-            android:name=".RefDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RefrigeratorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LikesActivity"
-            android:exported="false" />
-        <activity
             android:name=".RecipeActivity"
             android:exported="false" />
         <activity
