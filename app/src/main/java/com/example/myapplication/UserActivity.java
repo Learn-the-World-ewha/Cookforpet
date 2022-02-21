@@ -70,8 +70,6 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-
-
         rfragment = new RefrigFragment();
         lfragment = new LikesFragment();
         dfragment = new DeleteFragment();
@@ -102,16 +100,6 @@ public class UserActivity extends AppCompatActivity {
                     user_name = String.valueOf(task.getResult().getValue());
             }
         });
-
-//      username.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                user_name = snapshot.getValue(String.class);
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, rfragment).commit();
 
 
@@ -152,7 +140,6 @@ public class UserActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("로그아웃 하시겠습니까?");
         builder.setIcon(android.R.drawable.ic_dialog_info);
-
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override

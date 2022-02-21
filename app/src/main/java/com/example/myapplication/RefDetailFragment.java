@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,12 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class RefDetailFragment extends Fragment {
-    TextView img_main, txt_title, txt_tip, txt_type, txt_date;
+    TextView txt_title, txt_tip, txt_type, txt_date;
+    ImageView img_main;
     Button btn_usedall;
     RecyclerView recycler_rcp;
     RefrigItemAdapter adapter;
@@ -24,12 +29,12 @@ public class RefDetailFragment extends Fragment {
     UserActivity activity;
     Context context;
     Integer count;
-    String id;
+    String id,img_url;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_refrig, container, false);
+        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ref_detail, container, false);
         context = container.getContext();
 
         activity = (UserActivity) getActivity();
@@ -40,16 +45,26 @@ public class RefDetailFragment extends Fragment {
         txt_type = rootView.findViewById(R.id.txt_type);
         txt_date = rootView.findViewById(R.id.txt_date);
 
-        if (getArguments() != null){
-            img_main.setText(getArguments().getString("img_url"));
-            txt_title.setText(getArguments().getString("rcp_txt"));
-            txt_tip.setText(getArguments().getString("tip_txt"));
-            txt_type.setText(getArguments().getString("type_txt"));
-            txt_date.setText(getArguments().getString("date_txt"));
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            img_url = bundle.getString("img_url");
+            txt_title.setText(bundle.getString("rcp_txt"));
+            txt_tip.setText(bundle.getString("tip_txt"));
+            txt_type.setText(bundle.getString("type_txt"));
+            txt_date.setText(bundle.getString("date_txt"));
         }
 
+        Glide.with(this)                 //img_main 출력
+                .load(img_url)
+                .into(img_main);
 
         btn_usedall = rootView.findViewById(R.id.btn_usedall);
+        btn_usedall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         return rootView;
 

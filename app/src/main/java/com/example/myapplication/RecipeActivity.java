@@ -46,7 +46,8 @@ public class RecipeActivity extends AppCompatActivity {
     DatabaseAccess databaseAccess;
     Date mDate;
     long mNow;
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-mm-dd");
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+    int flag=0;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     final FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -94,6 +95,9 @@ public class RecipeActivity extends AppCompatActivity {
 
         databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
         databaseAccess.open();
+        //방문 기록
+        databaseAccess.insertVisit(user_code, recipe_code);
+
 
         reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
         DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
@@ -168,16 +172,23 @@ public class RecipeActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-
+                    flag=1;
+                    Integer tmp = Integer.parseInt(recipe_like)+ 1;
+                    recipe_like = tmp.toString();
+                    txt_like.setText(recipe_like);  //like 출력
+                    databaseAccess.UpdateLike(user_code,recipe_code,recipe_like);
                 } else {
-
+                    if (flag==1){
+                        flag=0;
+                        Integer tmp = Integer.parseInt(recipe_like)- 1;
+                        recipe_like = tmp.toString();
+                        txt_like.setText(recipe_like);  //like 출력
+                        databaseAccess.UpdateLike(user_code,recipe_code,recipe_like);
+                    }
                 }
             }
         });
 
-
-        //방문 기록
-        //databaseAccess.insertVisit(user_code, recipe_code);
         //databaseAccess.close();
     }
 
