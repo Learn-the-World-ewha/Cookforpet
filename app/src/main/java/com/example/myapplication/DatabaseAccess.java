@@ -232,6 +232,7 @@ public class DatabaseAccess {
             cv.put("like",0);
             db.insert("visit", null, cv);
         } else {
+
         }
     }
 }

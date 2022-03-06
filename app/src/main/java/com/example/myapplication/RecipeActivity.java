@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,21 +27,25 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 public class RecipeActivity extends AppCompatActivity {
     TextView txt_title, txt_tip, txt_type, txt_sum, txt_eff, txt_like, txt_time;
     ImageView img_main;
     RecyclerView recycler_mat, recycler_step;
     Button btn_complete;
-    ToggleButton tog_like;
+    CheckBox tog_like;
     String recipe_code, recipe_name, img_url, user_code, cook_date;
     String recipe_type, recipe_tip, recipe_sum, recipe_time, recipe_like, recipe_eff;
+    String like;
     MaterialItemAdapter adapter;
     StepItemAdapter adapter2;
     Intent intent;
@@ -47,11 +53,17 @@ public class RecipeActivity extends AppCompatActivity {
     Date mDate;
     long mNow;
     SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
-    int flag=0;
+    int flag = 0;
+    String like_count;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     final FirebaseUser user = firebaseAuth.getCurrentUser();
     private DatabaseReference reference;
+
+
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
+    Boolean like_state;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,6 +93,15 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_recipe);
+        tog_like = findViewById(R.id.tog_like);
+        //Shared Preference 초기화
+        pref=getSharedPreferences("toggle_like",MODE_PRIVATE);
+        editor=pref.edit();
+
+        like_state = pref.getBoolean("like_state",true);
+        tog_like.setChecked(like_state);
+
+
 
         Intent intent = getIntent();
         recipe_code = intent.getStringExtra("recipe_code");
@@ -92,6 +113,8 @@ public class RecipeActivity extends AppCompatActivity {
         recipe_sum = intent.getStringExtra("recipe_sum");
         recipe_tip = intent.getStringExtra("recipe_tip");
         recipe_type = intent.getStringExtra("recipe_type");
+
+
 
         databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
         databaseAccess.open();
@@ -165,32 +188,92 @@ public class RecipeActivity extends AppCompatActivity {
         }
         recycler_step.setAdapter(adapter2);
 
+        reference.child("like").child(recipe_code).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+               if (snapshot.exists()) {
+                   reference.child("like").child(recipe_code).child("count").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (!task.isSuccessful())
+                                Log.e("firebase", "Error getting data", task.getException());
+                            else {
+                                like_count = String.valueOf(task.getResult().getValue());
+                                txt_like.setText(like_count);
+                            }
+                        }
+                    });
+               }
+                else {
+                    Toast.makeText(RecipeActivity.this,"not",Toast.LENGTH_LONG).show();
+                    txt_like.setText("0");
+                    tog_like.setChecked(false);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
+        });
 
 
-        tog_like = findViewById(R.id.tog_like);
         tog_like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    flag=1;
-                    Integer tmp = Integer.parseInt(recipe_like)+ 1;
+                if (isChecked) {
+                    flag = 1;
+                    Integer tmp = Integer.parseInt(recipe_like) + 1;
                     recipe_like = tmp.toString();
                     txt_like.setText(recipe_like);  //like 출력
-                    databaseAccess.UpdateLike(user_code,recipe_code,recipe_like);
+                    databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
+                    reference.child("like").child(recipe_code).child("count").setValue(recipe_like);
+
+
                 } else {
-                    if (flag==1){
-                        flag=0;
-                        Integer tmp = Integer.parseInt(recipe_like)- 1;
+                        flag = 0;
+                        Integer tmp = Integer.parseInt(recipe_like) - 1;
                         recipe_like = tmp.toString();
                         txt_like.setText(recipe_like);  //like 출력
-                        databaseAccess.UpdateLike(user_code,recipe_code,recipe_like);
-                    }
+                        databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
+                        reference.child("like").child(recipe_code).child("count").setValue(recipe_like);
+
                 }
+
             }
         });
 
         //databaseAccess.close();
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences sharedPreferences=getSharedPreferences("tog_like",MODE_PRIVATE);
+
+        if(tog_like.isChecked()){
+            editor.putBoolean("like_state",true);
+            editor.apply();
+        }
+        else{
+            editor.putBoolean("like_state",false);
+            editor.apply();
+        }
+
+    }
+
+
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("key_recipe_like", recipe_like);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        savedInstanceState.getString("key_recipe_like", "0");
+    }
+
 
     public void onButton1Clicked(View v) {
 

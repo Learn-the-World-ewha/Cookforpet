@@ -39,14 +39,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <ToggleButton
+
+            <CheckBox
+
                 android:id="@+id/tog_like"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/like_toggle"
-                android:text="Like"
-                android:textOff=" "
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/empty_heart"
+
+
+
+
+               />
+
             <TextView
                 android:id="@+id/txt_like"
                 android:layout_width="wrap_content"
