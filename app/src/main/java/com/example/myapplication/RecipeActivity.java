@@ -206,8 +206,8 @@ public class RecipeActivity extends AppCompatActivity {
                }
                 else {
                     Toast.makeText(RecipeActivity.this,"not",Toast.LENGTH_LONG).show();
-                    txt_like.setText("0");
-                    tog_like.setChecked(false);
+     //               txt_like.setText("0");
+     //               tog_like.setChecked(false);
                 }
             }
             @Override
@@ -220,7 +220,7 @@ public class RecipeActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     flag = 1;
-                    Integer tmp = Integer.parseInt(recipe_like) + 1;
+                    Integer tmp = Integer.parseInt(recipe_like)+1 ;
                     recipe_like = tmp.toString();
                     txt_like.setText(recipe_like);  //like 출력
                     databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
@@ -229,7 +229,7 @@ public class RecipeActivity extends AppCompatActivity {
 
                 } else {
                         flag = 0;
-                        Integer tmp = Integer.parseInt(recipe_like) - 1;
+                        Integer tmp = Integer.parseInt(recipe_like)-1 ;
                         recipe_like = tmp.toString();
                         txt_like.setText(recipe_like);  //like 출력
                         databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
