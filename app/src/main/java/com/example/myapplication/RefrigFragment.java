@@ -40,6 +40,7 @@ public class RefrigFragment extends Fragment {
     Integer count;
     String id;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,9 +69,10 @@ public class RefrigFragment extends Fragment {
         code_date= activity.dbAc.getCodeDate(id);
         ArrayList<ArrayList<String>> Refriglist = activity.dbAc.getRefrigList(code_date);
         for(int i=0; i<Refriglist.size(); i++){
+                String tmp_code = code_date.get(i).get(0);
                 String tmp_date = code_date.get(i).get(1);
                 adapter.addItem(new RefrigItem(Refriglist.get(i).get(0), Refriglist.get(i).get(1), Refriglist.get(i).get(2),
-                        Refriglist.get(i).get(3), tmp_date));
+                        Refriglist.get(i).get(3), tmp_date,tmp_code));
         }
         recycler_rcp.setAdapter(adapter);
 
@@ -85,6 +87,8 @@ public class RefrigFragment extends Fragment {
                 bundle.putString("type_txt",item.type_txt);
                 bundle.putString("tip_txt",item.tip_txt);
                 bundle.putString("date_txt",item.date_txt);
+                bundle.putString("rcp_code",item.rcp_code);
+                bundle.putString("user_code",id);
 
                 FragmentManager fm = activity.getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();

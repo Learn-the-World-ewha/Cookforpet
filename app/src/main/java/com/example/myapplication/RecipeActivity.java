@@ -95,9 +95,6 @@ public class RecipeActivity extends AppCompatActivity {
 
         databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
         databaseAccess.open();
-        //방문 기록
-        databaseAccess.insertVisit(user_code, recipe_code);
-
 
         reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
         DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
@@ -106,8 +103,11 @@ public class RecipeActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful())
                     Log.e("firebase", "Error getting data", task.getException());
-                else
+                else {
                     user_code = String.valueOf(task.getResult().getValue());
+                    //방문 기록
+                    databaseAccess.insertVisit(user_code, recipe_code);
+                }
             }
         });
 

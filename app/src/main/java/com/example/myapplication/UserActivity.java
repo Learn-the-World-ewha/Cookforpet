@@ -89,7 +89,6 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-
         DatabaseReference username = reference.child("UserAccount").child(user.getUid()).child("name");
         username.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
