@@ -116,12 +116,6 @@ public class RecipeActivity extends AppCompatActivity {
 
 
 
-        databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-        databaseAccess.open();
-        //방문 기록
-        databaseAccess.insertVisit(user_code, recipe_code);
-
-
         reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
         DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
         usercode.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -133,6 +127,11 @@ public class RecipeActivity extends AppCompatActivity {
                     user_code = String.valueOf(task.getResult().getValue());
             }
         });
+
+        databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+        databaseAccess.open();
+        //방문 기록
+ //       databaseAccess.insertVisit(user_code, recipe_code);
 
         //레시피 관련 정보 출력
         txt_title = findViewById(R.id.txt_title);
@@ -206,8 +205,8 @@ public class RecipeActivity extends AppCompatActivity {
                }
                 else {
                     Toast.makeText(RecipeActivity.this,"not",Toast.LENGTH_LONG).show();
-     //               txt_like.setText("0");
-     //               tog_like.setChecked(false);
+                    txt_like.setText(recipe_like);
+                    tog_like.setChecked(false);
                 }
             }
             @Override
@@ -219,12 +218,11 @@ public class RecipeActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    flag = 1;
+                    //flag = 1;
                     Integer tmp = Integer.parseInt(recipe_like)+1 ;
                     recipe_like = tmp.toString();
                     txt_like.setText(recipe_like);  //like 출력
-                    databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
-                    reference.child("like").child(recipe_code).child("count").setValue(recipe_like);
+
 
 
                 } else {
@@ -232,10 +230,11 @@ public class RecipeActivity extends AppCompatActivity {
                         Integer tmp = Integer.parseInt(recipe_like)-1 ;
                         recipe_like = tmp.toString();
                         txt_like.setText(recipe_like);  //like 출력
-                        databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
-                        reference.child("like").child(recipe_code).child("count").setValue(recipe_like);
 
                 }
+                databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
+                Log.e("database", "성공");
+                reference.child("like").child(recipe_code).child("count").setValue(recipe_like);
 
             }
         });
