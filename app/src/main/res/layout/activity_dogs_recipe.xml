@@ -2,18 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".RecipeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".RecipeActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="333dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/txt_type"
                 android:layout_width="wrap_content"
@@ -21,8 +23,9 @@
                 android:layout_marginLeft="5dp"
                 android:text="Dog's"
                 android:textColor="@color/black"
-                android:textSize="36sp"
-                />
+                android:textSize="36sp" />
+
+
             <TextView
                 android:id="@+id/txt_title"
                 android:layout_width="350dp"
@@ -30,34 +33,38 @@
                 android:layout_marginLeft="5dp"
                 android:text="소고기와 양배추"
                 android:textColor="@color/black"
-                android:textSize="22sp"
-                />
+                android:textSize="22sp" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <ToggleButton
-                android:id="@+id/tog_like"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/like_toggle"
-                android:text="Like"
-                android:textOff=" "
-                />
-            <TextView
-                android:id="@+id/txt_like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="99"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                />
+            android:orientation="vertical">
+
+
+        <CheckBox
+            android:id="@+id/tog_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/like_toggle"
+            android:button="@null"
+            />
+
+        <TextView
+            android:id="@+id/txt_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="90"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:textSize="20dp" />
+
         </LinearLayout>
+
     </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -65,105 +72,109 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/img_main"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:scaleType="centerInside"
                 android:layout_marginTop="8dp"
+                android:scaleType="centerInside"
                 tools:srcCompat="@color/black" />
+
             <TextView
                 android:id="@+id/txt_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
                 android:layout_marginVertical="5dp"
+                android:layout_marginLeft="5dp"
                 android:text="summary"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/txt_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
                 android:layout_marginVertical="5dp"
+                android:layout_marginLeft="5dp"
                 android:text="3일 냉장보관 가능"
                 android:textColor="@color/purple_700"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginVertical="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="소요시간: "
                     android:textColor="#7a7a7a"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/txt_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="30분 이내"
                     android:textColor="#673AB7"
-                    android:textSize="14sp"
-                    />
+                    android:textSize="14sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" 기대효과: "
                     android:textColor="#7a7a7a"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/txt_eff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="다이어트"
                     android:textColor="#673AB7"
-                    android:textSize="14sp"
-                    />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_mat"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recycler_mat">
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginVertical="5dp"
                 android:text="조리 순서"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginVertical="5dp"/>
+                android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_step"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/recycler_step">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+
             <Button
                 android:id="@+id/btn_complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
                 android:layout_gravity="center"
+                android:backgroundTint="@color/black"
                 android:onClick="onButton1Clicked"
-                android:text="조리 완료"
-                />
+                android:text="조리 완료" />
         </LinearLayout>
     </ScrollView>
 

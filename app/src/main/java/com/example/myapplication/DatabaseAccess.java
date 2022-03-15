@@ -243,10 +243,16 @@ public class DatabaseAccess {
        db.insert("cook",null,cv);
     }
     public void insertVisit(String user_code, String recipe_code){
-        db.execSQL("insert or ignore into visit values ('"+user_code+"','"+recipe_code+ "', 0)");
-    }
-    public void deleteCook(String user_code, String recipe_code, String cook_date){
-        db.delete("cook","user_code = ? and recipe_code = ? and cook_date = ?",
-                new String[]{user_code, recipe_code, cook_date});
+        ContentValues cv = new ContentValues();
+        c = db.rawQuery("select user_code from visit where user_code='"+user_code+"'and recipe_code='"+recipe_code+
+                "'",new String[]{});
+        if (c.getCount()==0){ //방문한 적 없으면 insert
+            cv.put("user_code",user_code);
+            cv.put("recipe_code",recipe_code);
+            cv.put("like",0);
+            db.insert("visit", null, cv);
+        } else {
+
+        }
     }
 }

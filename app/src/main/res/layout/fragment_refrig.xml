@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_refrig"
     tools:context=".RefrigFragment"
     android:orientation="vertical">
     <LinearLayout
@@ -30,14 +31,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/cook_sum"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:text="99"
             android:textColor="#F37F41"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

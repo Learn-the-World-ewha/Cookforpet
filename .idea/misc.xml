@@ -3,13 +3,39 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1915" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1915" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1915" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1915" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/drawable/like_toggle.xml" value="0.1455" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/drawable/side_nav_bar.xml" value="0.1915" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_delete_account.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_dog_search_result.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_dogs_main.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_dogs_recipe.xml" value="0.2" />
         <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_likes.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_login.xml" value="0.12182971014492754" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_main.xml" value="0.11096014492753623" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_ref_detail.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_refrigerator.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_register.xml" value="0.11096014492753623" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_type.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/activity_user.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_cat_result.xml" value="0.10461956521739131" />
         <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_delete.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_dog_result.xml" value="0.264" />
         <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_likes.xml" value="0.10461956521739131" />
-        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_refrig.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_recommend.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_ref_detail.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_refrig.xml" value="0.2" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_result.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/fragment_test.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/mat_list.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/recipe_list.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/refrig_list.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/step_list.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/layout/test.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/menu/menu_actionbar.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/LG/AndroidStudioProjects/Cookforpet/app/src/main/res/menu/menu_userbar.xml" value="0.171875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dog_search_result.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_main.xml" value="0.24362606232294617" />
