@@ -5,13 +5,23 @@ public class RefrigItem {
     String rcp_txt;
     String date_txt;
     String type_txt, tip_txt;
+    String rcp_code;
 
-    public RefrigItem(String img_url, String rcp_txt, String type_txt, String tip_txt, String date_txt) {
+    public RefrigItem(String img_url, String rcp_txt, String type_txt, String tip_txt, String date_txt, String rcp_code) {
         this.img_url = img_url;
         this.rcp_txt = rcp_txt;
         this.date_txt = date_txt;
         this.type_txt = type_txt;
         this.tip_txt = tip_txt;
+        this.rcp_code = rcp_code;
+    }
+
+    public String getRcp_code() {
+        return rcp_code;
+    }
+
+    public void setRcp_code(String rcp_code) {
+        this.rcp_code = rcp_code;
     }
 
     public String getImg_url() {

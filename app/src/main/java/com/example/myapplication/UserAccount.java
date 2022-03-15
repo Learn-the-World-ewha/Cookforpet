@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import java.util.ArrayList;
+
 public class UserAccount {
     private String name;
     private String emailid;

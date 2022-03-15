@@ -8,26 +8,51 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class SubMainActivity extends AppCompatActivity {
     private ImageButton imgBtn_search;
     private EditText editTxt_search;
-    private String search;
-    private ImageButton imgBtn_home;
-    private ImageButton imgBtn_user;
     Intent intent;
 
-    DatabaseAccess dbAc;
-    Fragment recommendFragment;
-    Fragment resultFragment;
-    Fragment dogResultFragment, catResultFragment;
+    String effect, email, idToken, name, pwd;
+    int pettype;
 
+    ArrayList<String> list = new ArrayList<String>();
+
+    DatabaseAccess dbAc;
+    RecommendFragment recommendFragment;
+    ResultFragment resultFragment;
+    DogResultFragment dogResultFragment;
+    CatResultFragment catResultFragment;
+
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    final FirebaseUser user = firebaseAuth.getCurrentUser();
+    private DatabaseReference reference;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,40 +83,57 @@ public class SubMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_main);
 
-        final InputMethodManager manager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE) ;
+//        final InputMethodManager manager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE) ;
 
-        recommendFragment = (RecommendFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+        //recommendFragment = (RecommendFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        recommendFragment = new RecommendFragment();
         resultFragment = new ResultFragment();
         dogResultFragment = new DogResultFragment();
         catResultFragment = new CatResultFragment();
 
+
         dbAc = DatabaseAccess.getInstance(getApplicationContext());
         dbAc.open();
 
-//        RecyclerView recyclerView = findViewById(R.id.recycler_rcp);
-//        LinearLayoutManager layoutManager =
-//                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-//        recyclerView.setLayoutManager(layoutManager);
-//        RecipeItemAdapter adapter = new RecipeItemAdapter();
-//        // recipeItem 넣어야함
-//        recyclerView.setAdapter(adapter);
-//
-//        adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
-//            @Override
-//            public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
-//                RecipeItem item = adapter.getItem(position);
-//                Intent intent = new Intent(SubMainActivity.this, SearchResultActivity.class);
-//                startActivity(intent);  // activity 이동
-//            }
-//        });
 
+
+        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
+        DatabaseReference usertype = reference.child("UserAccount").child(user.getUid()).child("pettype");
+        usertype.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String tmp =snapshot.getValue().toString();
+                if (tmp.equals("Dog"))
+                    pettype = 2;
+                else if (tmp.equals("Cat"))
+                    pettype = 3;
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        DatabaseReference usereffect = reference.child("UserAccount").child(user.getUid()).child("effect");
+        usereffect.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                effect=snapshot.getValue().toString();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, recommendFragment).commit();
 
         editTxt_search = findViewById(R.id.editTxt_search);
         imgBtn_search = findViewById(R.id.imgBtn_search);
         imgBtn_search.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+//                manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 onFragmentChanged(1);
             }
         });
@@ -129,4 +171,5 @@ public class SubMainActivity extends AppCompatActivity {
         String s = editTxt_search.getText().toString();
         return s;
     }
+
 }

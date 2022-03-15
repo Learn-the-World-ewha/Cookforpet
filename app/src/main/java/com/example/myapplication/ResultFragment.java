@@ -39,6 +39,7 @@ public class ResultFragment extends Fragment {
     SubMainActivity activity;
     ViewGroup rootView;
 
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -83,7 +84,6 @@ public class ResultFragment extends Fragment {
                 activity.onFragmentChanged(3);
             }
         });
-
 
         //결과값 갯수 출력
         count = activity.dbAc.getResultSum(search, type);

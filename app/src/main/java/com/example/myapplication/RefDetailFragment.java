@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -29,7 +30,7 @@ public class RefDetailFragment extends Fragment {
     UserActivity activity;
     Context context;
     Integer count;
-    String id,img_url;
+    String id,img_url, rcp_code, cook_date;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,9 +52,12 @@ public class RefDetailFragment extends Fragment {
             txt_title.setText(bundle.getString("rcp_txt"));
             txt_tip.setText(bundle.getString("tip_txt"));
             txt_type.setText(bundle.getString("type_txt"));
-            txt_date.setText(bundle.getString("date_txt"));
+            cook_date = bundle.getString("date_txt");
+            rcp_code = bundle.getString("rcp_code");
+            id = bundle.getString("user_code");
         }
 
+        txt_date.setText(cook_date);
         Glide.with(this)                 //img_main 출력
                 .load(img_url)
                 .into(img_main);
@@ -62,7 +66,10 @@ public class RefDetailFragment extends Fragment {
         btn_usedall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                activity.dbAc.deleteCook(id, rcp_code, cook_date);
+                Toast.makeText(activity, "My refrigerator에서 삭제되었습니다.", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(activity, UserActivity.class);
+                startActivity(intent);
             }
         });
 

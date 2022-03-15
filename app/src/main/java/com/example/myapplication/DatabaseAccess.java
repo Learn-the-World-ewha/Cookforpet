@@ -68,6 +68,26 @@ public class DatabaseAccess {
         return code_list;
     }
 
+    public ArrayList<String> getRecommendCode(int num, String effect){
+        String type;
+        //if (pet.equals("Dog")){
+        if (num==2){
+            type = "멍키친";
+            c = db.rawQuery("select recipe_code from recipe where type='"+type+"' and effect='"+effect+"' order by like_sum desc", new String[]{});
+
+        //} else if (pet.equals("Cat")){
+        } else if (num==3){
+            type = "냥키친";
+            c = db.rawQuery("select recipe_code from recipe where type='"+type+"' and effect='"+effect+"' order by like_sum desc", new String[]{});
+        }
+        ArrayList<String> code_list = new ArrayList<String>();
+        while(c.moveToNext()){
+            Integer recipeCode = c.getInt(0);
+            code_list.add(recipeCode.toString());
+        }
+        return code_list;
+    }
+
     public Integer getResultSum(String mat, int num){
         String type;
         if (num==1){
@@ -167,7 +187,7 @@ public class DatabaseAccess {
 
     public ArrayList<ArrayList<String>> getCodeDate(String id){
         ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
-        c = db.rawQuery("select recipe_code, cook_date from cook where user_code='"+id+"' order by recipe_code", new String[]{});
+        c = db.rawQuery("select recipe_code, cook_date from cook where user_code='"+id+"' order by cook_date desc", new String[]{});
         while(c.moveToNext()){
             ArrayList<String> tmp = new ArrayList<>();
             tmp.add(c.getString(0));
@@ -203,13 +223,13 @@ public class DatabaseAccess {
     }
 
     public Integer getUserLikeSum(String id){
-        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like=1", new String[]{});
+        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like_btn=1", new String[]{});
         Integer count = c.getCount();
         return count;
     }
 
     public ArrayList<String> getUserLikeRecipe(String id){
-        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like=1", new String[]{});
+        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like_btn=1", new String[]{});
 
         ArrayList<String> code_list = new ArrayList<String>();
         while(c.moveToNext()){
