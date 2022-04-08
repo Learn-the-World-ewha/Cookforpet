@@ -62,11 +62,13 @@ public class RefDetailFragment extends Fragment {
                 .load(img_url)
                 .into(img_main);
 
+
+
         btn_usedall = rootView.findViewById(R.id.btn_usedall);
         btn_usedall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.dbAc.deleteCook(id, rcp_code, cook_date);
+       //         activity.dbAc.deleteCook(id, rcp_code, cook_date);
                 Toast.makeText(activity, "My refrigerator에서 삭제되었습니다.", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(activity, UserActivity.class);
                 startActivity(intent);

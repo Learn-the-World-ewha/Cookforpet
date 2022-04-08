@@ -223,13 +223,13 @@ public class DatabaseAccess {
     }
 
     public Integer getUserLikeSum(String id){
-        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like_btn=1", new String[]{});
+        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like=1", new String[]{});
         Integer count = c.getCount();
         return count;
     }
 
     public ArrayList<String> getUserLikeRecipe(String id){
-        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like_btn=1", new String[]{});
+        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like=1", new String[]{});
 
         ArrayList<String> code_list = new ArrayList<String>();
         while(c.moveToNext()){

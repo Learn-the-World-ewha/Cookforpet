@@ -114,7 +114,8 @@ public class RecipeActivity extends AppCompatActivity {
         recipe_tip = intent.getStringExtra("recipe_tip");
         recipe_type = intent.getStringExtra("recipe_type");
 
-
+        databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+        databaseAccess.open();
 
         reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
         DatabaseReference usercode = reference.child("UserAccount").child(user.getUid());
@@ -125,11 +126,11 @@ public class RecipeActivity extends AppCompatActivity {
                     Log.e("firebase", "Error getting data", task.getException());
                 else
                     user_code = String.valueOf(task.getResult().getValue());
+                    databaseAccess.insertVisit(user_code, recipe_code);
             }
         });
 
-        databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-        databaseAccess.open();
+
         //방문 기록
  //       databaseAccess.insertVisit(user_code, recipe_code);
 

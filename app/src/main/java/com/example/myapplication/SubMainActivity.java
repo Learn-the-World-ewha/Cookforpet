@@ -33,6 +33,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 public class SubMainActivity extends AppCompatActivity {
     private ImageButton imgBtn_search;
@@ -40,7 +41,11 @@ public class SubMainActivity extends AppCompatActivity {
     Intent intent;
 
     String effect, email, idToken, name, pwd;
+    ArrayList<String> recipe_code;
     int pettype;
+
+    Recipecode recipecode;
+
 
     ArrayList<String> list = new ArrayList<String>();
 
@@ -83,7 +88,7 @@ public class SubMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_main);
 
-//        final InputMethodManager manager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE) ;
+        final InputMethodManager manager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE) ;
 
 
         //recommendFragment = (RecommendFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -93,11 +98,13 @@ public class SubMainActivity extends AppCompatActivity {
         catResultFragment = new CatResultFragment();
 
 
+
         dbAc = DatabaseAccess.getInstance(getApplicationContext());
         dbAc.open();
 
 
 
+/*
         reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
         DatabaseReference usertype = reference.child("UserAccount").child(user.getUid()).child("pettype");
         usertype.addValueEventListener(new ValueEventListener() {
@@ -108,13 +115,18 @@ public class SubMainActivity extends AppCompatActivity {
                     pettype = 2;
                 else if (tmp.equals("Cat"))
                     pettype = 3;
+                Log.e("aa", "PETTYpE+ "+pettype );
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        DatabaseReference usereffect = reference.child("UserAccount").child(user.getUid()).child("effect");
+*/
+
+
+/*        DatabaseReference usereffect = reference.child("UserAccount").child(user.getUid()).child("effect");
         usereffect.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -124,9 +136,30 @@ public class SubMainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, recommendFragment).commit();
+
+       /* recipecode=new Recipecode(effect, pettype);
+        Bundle bundle=new Bundle();
+        bundle.putParcelable("recipecode",recipecode);
+        recommendFragment.setArguments(bundle);*/
+
+      /*  recipe_code = dbAc.getRecommendCode(pettype, effect);
+        Bundle bundle=new Bundle();*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, recommendFragment).commit();
 
         editTxt_search = findViewById(R.id.editTxt_search);
         imgBtn_search = findViewById(R.id.imgBtn_search);
@@ -138,26 +171,9 @@ public class SubMainActivity extends AppCompatActivity {
             }
         });
 
-//    25~마지막줄은 수정해야 함. 미완성 레시피 추천 함수임.
-//            public void getVal(); {
-//
-//                DatabaseHelper dbHelper = new DatabaseHelper(this);
-//                SQLiteDatabase db = dbHelper.getReadableDatabase();
-//
-//                Cursor cursor = db.rawQuery("SELECT * FROM recipe_ingredient where RECIPE_ID = 181",null);
-//                //" and name = ?",new String[]{"홍길동"});
-//                while (cursor.moveToNext())
-//                {
-//                    val += cursor.getString(2)+", ";
-//
-//                }
-//                sqlresult.setText("재료: "+val);
-//                cursor.close();
-//                dbHelper.close();
-//            }
     }
     public void onFragmentChanged(int index){
-        if (index == 0){
+        if (index == 0) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, recommendFragment).commit();
         } else if (index == 1){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, resultFragment).commit();
@@ -171,5 +187,7 @@ public class SubMainActivity extends AppCompatActivity {
         String s = editTxt_search.getText().toString();
         return s;
     }
+
+
 
 }
