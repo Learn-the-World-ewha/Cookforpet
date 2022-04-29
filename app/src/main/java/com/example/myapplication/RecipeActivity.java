@@ -130,10 +130,6 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
-
-        //방문 기록
- //       databaseAccess.insertVisit(user_code, recipe_code);
-
         //레시피 관련 정보 출력
         txt_title = findViewById(R.id.txt_title);
         txt_type = findViewById(R.id.txt_type);
@@ -223,15 +219,14 @@ public class RecipeActivity extends AppCompatActivity {
                     Integer tmp = Integer.parseInt(recipe_like)+1 ;
                     recipe_like = tmp.toString();
                     txt_like.setText(recipe_like);  //like 출력
-
-
+                    databaseAccess.updateVisit(user_code, recipe_code);
 
                 } else {
                         flag = 0;
                         Integer tmp = Integer.parseInt(recipe_like)-1 ;
                         recipe_like = tmp.toString();
                         txt_like.setText(recipe_like);  //like 출력
-
+                        databaseAccess.insertVisit(user_code, recipe_code);
                 }
                 databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
                 Log.e("database", "성공");
@@ -239,7 +234,6 @@ public class RecipeActivity extends AppCompatActivity {
 
             }
         });
-
         //databaseAccess.close();
     }
 

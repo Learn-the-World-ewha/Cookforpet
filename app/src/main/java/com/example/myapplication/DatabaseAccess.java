@@ -223,13 +223,13 @@ public class DatabaseAccess {
     }
 
     public Integer getUserLikeSum(String id){
-        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like=1", new String[]{});
+        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like_btn=1", new String[]{});
         Integer count = c.getCount();
         return count;
     }
 
     public ArrayList<String> getUserLikeRecipe(String id){
-        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like=1", new String[]{});
+        c = db.rawQuery("select recipe_code from visit where user_code='"+id+"' and like_btn=1", new String[]{});
 
         ArrayList<String> code_list = new ArrayList<String>();
         while(c.moveToNext()){
@@ -249,10 +249,32 @@ public class DatabaseAccess {
         if (c.getCount()==0){ //방문한 적 없으면 insert
             cv.put("user_code",user_code);
             cv.put("recipe_code",recipe_code);
-            cv.put("like",0);
+            cv.put("like_btn",0);
             db.insert("visit", null, cv);
         } else {
+            cv.put("user_code", user_code);
+            cv.put ("recipe_code", recipe_code);
+            cv.put("like_btn", 0);
 
+            // WHERE 절 수정될 열을 찾는다.
+            String selection = "user_code LIKE ?" +
+                    " AND "+ "recipe_code LIKE ?";
+            String[] selectionArgs = { user_code, recipe_code };
+
+            db.update("visit", cv, selection, selectionArgs);
         }
+    }
+    public void updateVisit(String user_code, String recipe_code){
+        ContentValues cv = new ContentValues();
+        cv.put("user_code", user_code);
+        cv.put ("recipe_code", recipe_code);
+        cv.put("like_btn", 1);
+
+        // WHERE 절 수정될 열을 찾는다.
+        String selection = "user_code LIKE ?" +
+                " AND "+ "recipe_code LIKE ?";
+        String[] selectionArgs = { user_code, recipe_code };
+
+        db.update("visit", cv, selection, selectionArgs);
     }
 }
