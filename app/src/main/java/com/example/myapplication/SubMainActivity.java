@@ -54,6 +54,7 @@ public class SubMainActivity extends AppCompatActivity {
     ResultFragment resultFragment;
     DogResultFragment dogResultFragment;
     CatResultFragment catResultFragment;
+    RecommendLaterFragment recommendLaterFragment;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     final FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -96,77 +97,19 @@ public class SubMainActivity extends AppCompatActivity {
         resultFragment = new ResultFragment();
         dogResultFragment = new DogResultFragment();
         catResultFragment = new CatResultFragment();
+        recommendLaterFragment = new RecommendLaterFragment();
 
 
 
         dbAc = DatabaseAccess.getInstance(getApplicationContext());
         dbAc.open();
 
-
-
-/*
-        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
-        DatabaseReference usertype = reference.child("UserAccount").child(user.getUid()).child("pettype");
-        usertype.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String tmp =snapshot.getValue().toString();
-                if (tmp.equals("Dog"))
-                    pettype = 2;
-                else if (tmp.equals("Cat"))
-                    pettype = 3;
-                Log.e("aa", "PETTYpE+ "+pettype );
-
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-*/
-
-
-/*        DatabaseReference usereffect = reference.child("UserAccount").child(user.getUid()).child("effect");
-        usereffect.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                effect=snapshot.getValue().toString();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
-
-       /* recipecode=new Recipecode(effect, pettype);
-        Bundle bundle=new Bundle();
-        bundle.putParcelable("recipecode",recipecode);
-        recommendFragment.setArguments(bundle);*/
-
-      /*  recipe_code = dbAc.getRecommendCode(pettype, effect);
-        Bundle bundle=new Bundle();*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, recommendFragment).commit();
-
         editTxt_search = findViewById(R.id.editTxt_search);
         imgBtn_search = findViewById(R.id.imgBtn_search);
         imgBtn_search.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-//                manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 onFragmentChanged(1);
             }
         });
@@ -181,6 +124,8 @@ public class SubMainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dogResultFragment).commit();
         } else if (index == 3){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, catResultFragment).commit();
+        } else if (index == 4){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, recommendLaterFragment).commit();
         }
     }
     public String getSearch(){

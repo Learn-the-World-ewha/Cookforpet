@@ -16,8 +16,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,6 +38,7 @@ public class RecommendFragment extends Fragment {
     //Context context;
     ViewGroup rootView;
 
+    Button recommend_btn;
     RecyclerView recycler_rcp;
     RecipeItemAdapter adapter;
     ArrayList<String> recipe_code;
@@ -75,6 +78,7 @@ public class RecommendFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_recommend, container, false);
 
+
         return rootView;
     }
 
@@ -82,6 +86,7 @@ public class RecommendFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         setupViews();
         fetchCookForPet();
+        setButton();
         recycler_rcp.setAdapter(adapter);
         adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
             @Override
@@ -179,8 +184,15 @@ public class RecommendFragment extends Fragment {
         }
     return result;
     }
-
-
+    private void setButton(){
+        recommend_btn = rootView.findViewById(R.id.recommend_btn);
+        recommend_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.onFragmentChanged(4);
+            }
+        });
+    }
 
 }
 
