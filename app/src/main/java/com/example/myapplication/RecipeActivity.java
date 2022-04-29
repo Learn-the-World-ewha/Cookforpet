@@ -201,7 +201,6 @@ public class RecipeActivity extends AppCompatActivity {
                     });
                }
                 else {
-                    Toast.makeText(RecipeActivity.this,"not",Toast.LENGTH_LONG).show();
                     txt_like.setText(recipe_like);
                     tog_like.setChecked(false);
                 }
@@ -229,7 +228,6 @@ public class RecipeActivity extends AppCompatActivity {
                         databaseAccess.insertVisit(user_code, recipe_code);
                 }
                 databaseAccess.UpdateLike(user_code, recipe_code, recipe_like);
-                Log.e("database", "성공");
                 reference.child("like").child(recipe_code).child("count").setValue(recipe_like);
 
             }

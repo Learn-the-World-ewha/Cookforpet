@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.security.KeyStore;
 import java.util.ArrayList;
 
 public class DatabaseAccess {
@@ -276,5 +278,15 @@ public class DatabaseAccess {
         String[] selectionArgs = { user_code, recipe_code };
 
         db.update("visit", cv, selection, selectionArgs);
+    }
+
+    public void deleteCook(String user_code, String recipe_code){
+
+        String selection = "user_code LIKE ?" +
+                " and " +  "recipe_code LIKE ?";
+        String[] selectionArgs = {user_code, recipe_code};
+        db.delete ("cook", selection, selectionArgs);
+
+
     }
 }
