@@ -242,6 +242,13 @@ public class DatabaseAccess {
     public void insertCook(ContentValues cv){
        db.insert("cook",null,cv);
     }
+
+
+    public void deleteCook(String id, String rcp_code, String cook_date){
+        db.delete("cook","id = ?, rcp_code = ?, cook_date = ?", new String[]{id, rcp_code, cook_date});
+    }
+
+
     public void insertVisit(String user_code, String recipe_code){
         ContentValues cv = new ContentValues();
         c = db.rawQuery("select user_code from visit where user_code='"+user_code+"'and recipe_code='"+recipe_code+

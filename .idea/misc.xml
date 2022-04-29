@@ -15,7 +15,9 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_main.xml" value="0.24362606232294617" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_dogs_recipe.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_user.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_recommend.xml" value="0.1381340579710145" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_cat_result.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_recommend.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_recommend_later.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_ref_detail.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_refrig.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_test.xml" value="0.1" />
@@ -35,7 +37,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
