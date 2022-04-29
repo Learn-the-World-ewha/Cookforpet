@@ -82,7 +82,24 @@ public class RecommendFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         setupViews();
         fetchCookForPet();
-
+        recycler_rcp.setAdapter(adapter);
+        adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
+            @Override
+            public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
+                RecipeItem item = adapter.getItem(position);
+                Intent intent = new Intent(activity, RecipeActivity.class);
+                intent.putExtra("recipe_code", recipe_code.get(position));
+                intent.putExtra("recipe_name",item.rcp_txt);
+                intent.putExtra("img_url",item.img_url);
+                intent.putExtra("recipe_sum", item.txt_sum);
+                intent.putExtra("recipe_type", item.txt_type);
+                intent.putExtra("recipe_time", item.txt_time);
+                intent.putExtra("recipe_tip",item.txt_tip);
+                intent.putExtra("recipe_eff",item.txt_eff);
+                intent.putExtra("recipe_like",item.txt_like);
+                startActivity(intent);  // activity 이동
+            }
+        });
         }
     private void setupViews() {
 

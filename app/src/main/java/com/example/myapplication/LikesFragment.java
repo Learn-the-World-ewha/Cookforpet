@@ -45,13 +45,14 @@ public class LikesFragment extends Fragment {
         cook_sum = rootView.findViewById(R.id.like_sum);
         cook_sum.setText(count.toString());
 
-//        //레시피 목록 출력
-//        recycler_rcp = rootView.findViewById(R.id.recycler_rcp);
-//        LinearLayoutManager layoutManager =
-//                new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-//        recycler_rcp.setLayoutManager(layoutManager);
-//        adapter = new RecipeItemAdapter();
-//
+        //레시피 목록 출력
+        recycler_rcp = rootView.findViewById(R.id.recycler_rcp);
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        recycler_rcp.setLayoutManager(layoutManager);
+        adapter = new RecipeItemAdapter();
+
+        LikesItems();
 //        recipe_code= activity.dbAc.getUserLikeRecipe(id);
 //        ArrayList<ArrayList<String>> Recipelist = activity.dbAc.getRecipelist(recipe_code);
 //        for(int i=0; i<Recipelist.size(); i++){
@@ -59,26 +60,50 @@ public class LikesFragment extends Fragment {
 //                        Recipelist.get(i).get(3), Recipelist.get(i).get(4), Recipelist.get(i).get(5), Recipelist.get(i).get(6),
 //                        Recipelist.get(i).get(7)));
 //        }
-//        recycler_rcp.setAdapter(adapter);
-//
-//        adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
-//            @Override
-//            public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
-//                RecipeItem item = adapter.getItem(position);
-//                Intent intent = new Intent(context, RecipeActivity.class);
-//                intent.putExtra("recipe_code", recipe_code.get(position));
-//                intent.putExtra("recipe_name",item.rcp_txt);
-//                intent.putExtra("img_url",item.img_url);
-//                intent.putExtra("recipe_sum", item.txt_sum);
-//                intent.putExtra("recipe_type", item.txt_type);
-//                intent.putExtra("recipe_time", item.txt_time);
-//                intent.putExtra("recipe_tip",item.txt_tip);
-//                intent.putExtra("recipe_eff",item.txt_eff);
-//                intent.putExtra("recipe_like",item.txt_like);
-//                startActivity(intent);  // activity 이동
-//            }
-//        });
+        recycler_rcp.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new OnRecipeItemClickListener() {
+            @Override
+            public void onItemClick(RecipeItemAdapter.ViewHolder holder, View view, int position) {
+                RecipeItem item = adapter.getItem(position);
+                Intent intent = new Intent(context, RecipeActivity.class);
+                intent.putExtra("recipe_code", recipe_code.get(position));
+                intent.putExtra("recipe_name",item.rcp_txt);
+                intent.putExtra("img_url",item.img_url);
+                intent.putExtra("recipe_sum", item.txt_sum);
+                intent.putExtra("recipe_type", item.txt_type);
+                intent.putExtra("recipe_time", item.txt_time);
+                intent.putExtra("recipe_tip",item.txt_tip);
+                intent.putExtra("recipe_eff",item.txt_eff);
+                intent.putExtra("recipe_like",item.txt_like);
+                startActivity(intent);  // activity 이동
+            }
+        });
 
         return rootView;
+    }
+    private void LikesItems() {
+        ArrayList <RecipeItem> items=getLikesItems();
+        adapter.setItems(items);
+    }
+    private ArrayList<RecipeItem> getLikesItems(){
+        recipe_code= activity.dbAc.getUserLikeRecipe(id);
+        ArrayList<ArrayList<String>> recipeLists = activity.dbAc.getRecipelist(recipe_code);
+
+        ArrayList<RecipeItem> result= new ArrayList<>();
+        for (ArrayList<String> receiptList : recipeLists) {
+            RecipeItem item = new RecipeItem(
+                    receiptList.get(0),
+                    receiptList.get(1),
+                    receiptList.get(8),
+                    receiptList.get(2),
+                    receiptList.get(3),
+                    receiptList.get(4),
+                    receiptList.get(5),
+                    receiptList.get(6),
+                    receiptList.get(7));
+            result.add(item);
+        }
+        return result;
     }
 }
