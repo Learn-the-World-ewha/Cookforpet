@@ -51,9 +51,10 @@
         android:id="@+id/txt_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bccardb"
         android:text="Register"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="44sp"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toTopOf="@id/guidelineTop" />
 
@@ -75,7 +76,8 @@
                 android:layout_marginTop="66dp"
                 android:background="@drawable/edge"
                 android:ems="10"
-                android:hint="이름을 입력하세요"
+                android:fontFamily="@font/bccardb"
+                android:hint="이름을 입력하세요.(6글자 이상)"
                 android:inputType="textPersonName"
                 android:padding="10dp"
                 android:textColorHint="#7A7A7A"
@@ -101,7 +103,8 @@
                     android:background="@drawable/edge"
                     android:layout_gravity="center"
                     android:ems="10"
-                    android:hint="ID를 입력하세요"
+                    android:fontFamily="@font/bccardb"
+                    android:hint="이메일을 입력하세요."
                     android:inputType="textPersonName"
                     android:padding="10dp"
                     android:textColorHint="#7A7A7A"
@@ -116,7 +119,8 @@
                     android:backgroundTint="#000000"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    android:text="중복 확인"
+                    android:fontFamily="@font/bccardb"
+                    android:text="중복확인"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
 
@@ -127,7 +131,8 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/edge"
                 android:ems="10"
-                android:hint="비밀번호를 입력하세요"
+                android:fontFamily="@font/bccardb"
+                android:hint="비밀번호를 입력하세요.(6글자 이상)"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textColorHint="#7A7A7A"
@@ -143,6 +148,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/edge"
                 android:ems="10"
+                android:fontFamily="@font/bccardb"
                 android:hint="비밀번호를 한 번 더 입력하세요"
                 android:inputType="textPassword"
                 android:padding="10dp"
@@ -170,9 +176,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="4dp"
+                    android:fontFamily="@font/bccardb"
                     android:text="Pet Type"
                     android:textColor="#000000"
-                    android:textSize="24sp"
+                    android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="@id/guidelineMid2"
                     app:layout_constraintStart_toStartOf="@id/guidelineStart"
                     app:layout_constraintTop_toTopOf="@+id/guidelineMid1" />
@@ -190,6 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/bccardb"
                         android:text="Dog"
                         android:textSize="16dp" />
 
@@ -198,6 +206,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/bccardb"
                         android:text="Cat"
                         android:textSize="16dp"/>
 
@@ -221,6 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
+                    android:fontFamily="@font/bccardb"
                     android:text="기대 효과"
                     android:textColor="#000000"
                     android:textSize="24sp"
@@ -243,6 +253,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="0dp"
+                        android:fontFamily="@font/bccardb"
                         android:text="다이어트"
                         />
 
@@ -252,6 +263,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="0dp"
+                        android:fontFamily="@font/bccardb"
                         android:text="모질개선" />
 
                     <RadioButton
@@ -260,6 +272,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="0dp"
+                        android:fontFamily="@font/bccardb"
                         android:text="구강개선" />
 
                     <RadioButton
@@ -268,6 +281,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="0dp"
+                        android:fontFamily="@font/bccardb"
                         android:text="신장관련" />
 
                     <RadioButton
@@ -276,6 +290,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="0dp"
+                        android:fontFamily="@font/bccardb"
                         android:text="관절관련" />
 
                     <RadioButton
@@ -284,6 +299,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="0dp"
+                        android:fontFamily="@font/bccardb"
                         android:text="장관련" />
                 </RadioGroup>
             </LinearLayout>
@@ -293,6 +309,7 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#000000"
+                android:fontFamily="@font/bccardb"
                 android:text="회원가입"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"

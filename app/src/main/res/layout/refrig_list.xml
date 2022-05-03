@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
+            android:fontFamily="@font/suncheonb"
             android:text="레시피명"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -39,12 +40,14 @@
                 android:layout_height="wrap_content"
                 android:textColor="#494949"
                 android:textSize="18sp"
+                android:fontFamily="@font/suncheonr"
                 android:text="22.01.26"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#494949"
                 android:textSize="18sp"
+                android:fontFamily="@font/suncheonr"
                 android:text=" 조리"/>
         </LinearLayout>
 

@@ -28,6 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_marginVertical="5dp"
+            android:fontFamily="@font/bccardb"
             android:text="Dog's"
             android:textColor="@color/black"
             android:textSize="30sp"
@@ -39,6 +40,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_marginVertical="5dp"
+            android:fontFamily="@font/bccardb"
             android:text="소고기와 양배추"
             android:textColor="@color/black"
             android:textSize="22sp"
@@ -50,6 +52,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_marginVertical="5dp"
+            android:fontFamily="@font/suncheonr"
             android:text="3일 냉장보관 가능"
             android:textColor="@color/purple_700"
             android:textSize="14sp"/>
@@ -62,6 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/suncheonr"
                 android:text="조리 날짜: "
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
@@ -69,6 +73,7 @@
                 android:id="@+id/txt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/suncheonr"
                 android:text="22.01.26"
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
@@ -81,6 +86,7 @@
             android:layout_gravity="center"
             android:paddingVertical="8dp"
             android:backgroundTint="@color/black"
+            android:fontFamily="@font/bccardb"
             android:text="소진 완료"
             android:textSize="20sp" />
     </LinearLayout>

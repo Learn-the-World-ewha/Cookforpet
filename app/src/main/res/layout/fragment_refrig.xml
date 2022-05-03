@@ -14,18 +14,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/bccardr"
             android:text="Hello "
             android:layout_gravity="bottom"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="28sp"
             />
         <TextView
             android:id="@+id/name_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/bccardr"
             android:text=""
             android:textColor="@color/purple_500"
-            android:textSize="28sp"/>
+            android:textSize="32sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -37,12 +39,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/suncheonr"
             android:text="99"
             android:textColor="#F37F41"
             android:textSize="24sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/suncheonr"
             android:text=" cooked"
             android:textColor="@color/black"
             android:textSize="20sp" />

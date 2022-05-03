@@ -21,9 +21,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:fontFamily="@font/bccardb"
                 android:text="Dog's"
                 android:textColor="@color/black"
-                android:textSize="36sp" />
+                android:textSize="40sp" />
 
 
             <TextView
@@ -31,6 +32,7 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:fontFamily="@font/suncheonb"
                 android:text="소고기와 양배추"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
@@ -56,6 +58,7 @@
             android:id="@+id/txt_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/bccardr"
             android:text="90"
             android:textColor="@color/black"
             android:layout_gravity="center"
@@ -85,22 +88,24 @@
 
             <TextView
                 android:id="@+id/txt_sum"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginVertical="5dp"
                 android:layout_marginLeft="5dp"
+                android:fontFamily="@font/suncheonr"
                 android:text="summary"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/txt_tip"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginVertical="5dp"
                 android:layout_marginLeft="5dp"
+                android:fontFamily="@font/suncheonr"
                 android:text="3일 냉장보관 가능"
                 android:textColor="@color/purple_700"
                 android:textSize="14sp" />
@@ -114,6 +119,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/suncheonr"
                     android:text="소요시간: "
                     android:textColor="#7a7a7a"
                     android:textSize="14sp" />
@@ -122,6 +128,7 @@
                     android:id="@+id/txt_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/suncheonr"
                     android:text="30분 이내"
                     android:textColor="#673AB7"
                     android:textSize="14sp" />
@@ -129,6 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/suncheonr"
                     android:text=" 기대효과: "
                     android:textColor="#7a7a7a"
                     android:textSize="14sp" />
@@ -137,6 +145,7 @@
                     android:id="@+id/txt_eff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/suncheonr"
                     android:text="다이어트"
                     android:textColor="#673AB7"
                     android:textSize="14sp" />
@@ -158,6 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginVertical="5dp"
+                android:fontFamily="@font/suncheonb"
                 android:text="조리 순서"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -174,6 +184,7 @@
                 android:layout_gravity="center"
                 android:backgroundTint="@color/black"
                 android:onClick="onButton1Clicked"
+                android:fontFamily="@font/bccardb"
                 android:text="조리 완료" />
         </LinearLayout>
     </ScrollView>

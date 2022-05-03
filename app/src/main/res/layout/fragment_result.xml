@@ -21,6 +21,7 @@
                 android:id="@+id/txt_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/suncheonr"
                 android:text="99"
                 android:textColor="#F37F41"
                 android:textSize="24sp" />
@@ -28,6 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/suncheonr"
                 android:text=" results"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -41,6 +43,7 @@
             android:padding="0dp"
             android:textColor="#FFFFFF"
             android:backgroundTint="@color/purple_700"
+            android:fontFamily="@font/bccardb"
             android:text="All"
             android:textAllCaps="false"
             />
@@ -52,6 +55,7 @@
             android:backgroundTint="#FFFFFF"
             android:textColor="@color/purple_700"
             android:layout_marginHorizontal="2dp"
+            android:fontFamily="@font/bccardb"
             android:text="Dog's"
             android:textAllCaps="false"
             />
@@ -63,6 +67,7 @@
             android:backgroundTint="#FFFFFF"
             android:textColor="@color/purple_700"
             android:layout_marginHorizontal="2dp"
+            android:fontFamily="@font/bccardb"
             android:text="Cat's"
             android:textAllCaps="false"
             />
