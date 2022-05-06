@@ -29,10 +29,10 @@
 
             <TextView
                 android:id="@+id/txt_title"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:fontFamily="@font/suncheonb"
+                android:fontFamily="@font/suncheonr"
                 android:text="소고기와 양배추"
                 android:textColor="@color/black"
                 android:textSize="22sp" />
