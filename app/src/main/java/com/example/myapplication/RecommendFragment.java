@@ -168,8 +168,6 @@ public class RecommendFragment extends Fragment {
 
         ArrayList<RecipeItem> result= new ArrayList<>();
         for (ArrayList<String> receiptList : recipeLists) {
-            // 아래 데이터타입 변환하는 코드를 보면 파이어베이스 구조를 점검해 보셔야 할 것으로 보이네요.
-            // 아래처럼 리스트 구조가 아니라, 맵처럼 해당 필드를 가지는 구조로 flat하게 바꾸셔야 할 것 같은데요...
             RecipeItem item = new RecipeItem(
                     receiptList.get(0),
                     receiptList.get(1),

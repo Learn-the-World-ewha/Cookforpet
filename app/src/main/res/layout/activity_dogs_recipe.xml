@@ -105,10 +105,10 @@
                 android:layout_gravity="center"
                 android:layout_marginVertical="5dp"
                 android:layout_marginLeft="5dp"
-                android:fontFamily="@font/suncheonr"
+                android:fontFamily="@font/bccardr"
                 android:text="3일 냉장보관 가능"
                 android:textColor="@color/purple_700"
-                android:textSize="14sp" />
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
