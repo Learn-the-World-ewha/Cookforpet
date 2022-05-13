@@ -101,6 +101,7 @@ public class SubMainActivity extends AppCompatActivity {
 
 
 
+
         dbAc = DatabaseAccess.getInstance(getApplicationContext());
         dbAc.open();
 
