@@ -105,30 +105,41 @@ public class DatabaseAccess {
         return code_list;
     }
 
-    public ArrayList<String> getLikeRecommendCode(String user_code){
-        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
-        ArrayList<String> code_Recommlist = new ArrayList<>();
-
-        DatabaseReference Recommlist = reference.child("recommend").child(user_code).child("list");
-        Recommlist.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String rst = snapshot.getValue().toString();
-                CharSequence str = rst;
-
-                Pattern p = Pattern.compile("[0-9]+");
-                Matcher m = p.matcher(str);
-                while(m.find()){
-                    code_Recommlist.add(m.group());
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("fail","likelist");
-            }
-        });
-        return code_Recommlist;
+    public ArrayList<String> extractCode(String str){
+        CharSequence cs = str;
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(cs);
+        ArrayList<String> code_list = new ArrayList<String>();
+        while(m.find()) {
+            code_list.add(m.group());
+        }
+        return code_list;
     }
+
+//    public ArrayList<String> getLikeRecommendCode(String user_code){
+//        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
+//        ArrayList<String> code_Recommlist = new ArrayList<>();
+//
+//        DatabaseReference Recommlist = reference.child("recommend").child(user_code).child("list");
+//        Recommlist.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                String rst = snapshot.getValue().toString();
+//                CharSequence str = rst;
+//
+//                Pattern p = Pattern.compile("[0-9]+");
+//                Matcher m = p.matcher(str);
+//                while(m.find()){
+//                    code_Recommlist.add(m.group());
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Log.d("fail","likelist");
+//            }
+//        });
+//        return code_Recommlist;
+//    }
 
     public Integer getResultSum(String mat, int num){
         String type;

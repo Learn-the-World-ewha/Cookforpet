@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +19,25 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class RecommendLaterFragment extends Fragment {
+    SubMainActivity activity;
+    ViewGroup rootView;
+
     Button recommend_btn;
     RecyclerView recycler_rcp;
     RecipeItemAdapter adapter;
+
     ArrayList<String> recipe_code;
-    SubMainActivity activity;
-    ViewGroup rootView;
+
+    String rst;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     final FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -98,13 +106,33 @@ public class RecommendLaterFragment extends Fragment {
     }
 
     private void showItems() {
+        getLikeRecommendCode(user.getUid());
+    }
+
+    private void getLikeRecommendCode(String user_code){
+        reference = FirebaseDatabase.getInstance().getReference("Cookforpet");
+        DatabaseReference code_list = reference.child("recommend").child(user_code).child("list");
+        code_list.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                rst = snapshot.getValue().toString();
+                fetchList();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("fail","likelist");
+            }
+        });
+    }
+
+    private void fetchList(){
         ArrayList <RecipeItem> items=getLikeRecipeItems();
         adapter.setItems(items);
     }
 
     private ArrayList<RecipeItem> getLikeRecipeItems() {
-        //recipe_code = activity.dbAc.getLikeRecommendCode(user.getUid());
-        recipe_code = activity.dbAc.getRecommendCode(3,"관절관련");
+        //recipe_code = activity.dbAc.getRecommendCode(3,"관절관련");
+        recipe_code=activity.dbAc.extractCode(rst);
         ArrayList<ArrayList<String>> recipeLists = activity.dbAc.getRecipelist(recipe_code);
 
         ArrayList<RecipeItem> result = new ArrayList<>();
