@@ -10,6 +10,20 @@ import android.widget.Toast;
 
 import java.security.KeyStore;
 import java.util.ArrayList;
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
@@ -18,6 +32,7 @@ public class DatabaseAccess {
     private static DatabaseAccess instance;
     Cursor c = null;
     Cursor c2 = null;
+    private DatabaseReference reference;
 
     //private constructor so that object creation from outside the class is avoided
     private DatabaseAccess(Context context){
@@ -86,6 +101,17 @@ public class DatabaseAccess {
         while(c.moveToNext()){
             Integer recipeCode = c.getInt(0);
             code_list.add(recipeCode.toString());
+        }
+        return code_list;
+    }
+
+    public ArrayList<String> extractCode(String str){
+        CharSequence cs = str;
+        Pattern p = Pattern.compile("[0-9]+");
+        Matcher m = p.matcher(cs);
+        ArrayList<String> code_list = new ArrayList<String>();
+        while(m.find()) {
+            code_list.add(m.group());
         }
         return code_list;
     }
