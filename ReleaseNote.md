@@ -1,6 +1,11 @@
 # Cookforpet
 반려동물 수제 사료 및 간식 레시피 추천 앱
 
+<Quick Start Guide>
+ https://drive.google.com/drive/folders/1wWkJNxiY3DQqm41MIfKonIqmrX_7xXg0
+ 주소 안의 apk파일을 다운로드 받아서 실행한다.
+ 
+
 시연 영상
  - 유튜브 주소: https://www.youtube.com/watch?v=Wa2npYRNktg
 
