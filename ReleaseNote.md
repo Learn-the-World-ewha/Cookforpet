@@ -6,7 +6,7 @@ Quick Start Guide
 -  https://drive.google.com/drive/folders/1wWkJNxiY3DQqm41MIfKonIqmrX_7xXg0  주소 안의 apk파일을 다운로드 받아서 실행한다.
  
 앱 사용 방법
-<img width=”50%” src=”![KakaoTalk_Photo_2022-05-10-12-26-42 001](https://user-images.githubusercontent.com/89790235/172294689-f95d8c67-4b81-4051-80ef-0990871a386a.png)”/>![image](https://user-images.githubusercontent.com/89790235/172294840-9c563e29-4bd7-4d3f-8ef7-296c6447d8ea.png)
+<img width="50%" src="https://user-images.githubusercontent.com/89790235/172294840-9c563e29-4bd7-4d3f-8ef7-296c6447d8ea.png"/>
 
 
 1.회원가입을 진행한다.
