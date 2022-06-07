@@ -3,8 +3,7 @@
 
 Quick Start Guide
 
- https://drive.google.com/drive/folders/1wWkJNxiY3DQqm41MIfKonIqmrX_7xXg0
- 주소 안의 apk파일을 다운로드 받아서 실행한다.
+-  https://drive.google.com/drive/folders/1wWkJNxiY3DQqm41MIfKonIqmrX_7xXg0  주소 안의 apk파일을 다운로드 받아서 실행한다.
  
 
 시연 영상
