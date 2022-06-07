@@ -30,7 +30,7 @@ Quick Start Guide
 3. 레시피 추천
 
 - 로그인 후 뜨는 화면에서 기대효과 기반 추천 레시피 목록을 볼 수 있다.
- - 바로 목록이 뜨지 않을 경우, 검색창을 클릭하면 목록이 뜨는 것을 볼 수 있다.
+ + 바로 목록이 뜨지 않을 경우, 검색창을 클릭하면 목록이 뜨는 것을 볼 수 있다.
 - ‘based on your likes’ 버튼 클릭 시 좋아요 기반 추천 레시피 목록을 볼 수 있다.
 
 <img src = "https://user-images.githubusercontent.com/89790235/172296020-06b172d6-6cc4-403d-835f-9714cfffb0e7.png" width = "150" />
