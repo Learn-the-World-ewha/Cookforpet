@@ -6,10 +6,7 @@ Quick Start Guide
 -  https://drive.google.com/drive/folders/1wWkJNxiY3DQqm41MIfKonIqmrX_7xXg0  주소 안의 apk파일을 다운로드 받아서 실행한다.
  
 앱 사용 방법
-<img width="50%" src="https://user-images.githubusercontent.com/89790235/172294840-9c563e29-4bd7-4d3f-8ef7-296c6447d8ea.png"/>
-
-![그림1](https://user-images.githubusercontent.com/89790235/172295170-3128d3fa-6c4a-434d-adf4-1fecbdb8cc3a.png)
-
+<img src = "https://user-images.githubusercontent.com/89790235/172295344-42c4db6d-3515-4d99-b9dd-f9c4499a9967.png" />
 
 
 1.회원가입을 진행한다.
