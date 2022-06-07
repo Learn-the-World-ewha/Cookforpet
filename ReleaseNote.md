@@ -8,6 +8,9 @@ Quick Start Guide
 앱 사용 방법
 <img width="50%" src="https://user-images.githubusercontent.com/89790235/172294840-9c563e29-4bd7-4d3f-8ef7-296c6447d8ea.png"/>
 
+![그림1](https://user-images.githubusercontent.com/89790235/172295170-3128d3fa-6c4a-434d-adf4-1fecbdb8cc3a.png)
+
+
 
 1.회원가입을 진행한다.
 이름 : 6글자 이상 (ex. ewhain)
