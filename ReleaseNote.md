@@ -17,8 +17,13 @@ Quick Start Guide
 - 비밀번호 : 6글자 이상 (ex. 123456)
 - Pet Type : dog, cat 중 택 1
 - 기대효과 : 6개 목록 중 택 1
+<img src = "https://user-images.githubusercontent.com/89790235/172295649-5d8dc2ef-6c7d-4bd4-9f63-ed931383a201.png" width = "100" />
+
 
 
 2. 회원가입에 입력한 이메일, 비밀번호로 로그인을 진행한다.
+<img src = "https://user-images.githubusercontent.com/89790235/172295588-c4e7f8cc-575f-4945-92a9-34d1e9b23286.png" width = "100" />
+
+ 
 
 
